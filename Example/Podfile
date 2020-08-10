@@ -1,0 +1,90 @@
+workspace 'Example'
+platform :ios, '10.0'
+use_frameworks!
+
+def caesura
+  if ENV['TRAVIS']
+    pod 'Caesura', :path => '../'
+  else
+    pod 'Caesura'
+  end
+end
+
+def leash
+  pod 'Leash', '~> 3.2'
+end
+
+def utils
+  pod 'AwesomeUtilities', '~> 1.8'
+end
+
+def ui
+  pod 'SnapKit', '~> 5.0'
+end
+
+def rx
+  pod 'RxDataSources', '~> 4.0'
+end
+
+target 'Example' do
+  caesura
+  leash
+  utils
+  ui
+  rx
+  target 'Tests'
+end
+
+target 'API' do
+  project 'API/API'
+  leash
+end
+
+target 'Common' do
+  project 'Common/Common'
+  caesura
+  leash
+  utils
+  rx
+  target 'CommonTests'
+end
+
+target 'Middlewares' do
+  project 'Middlewares/Middlewares'
+  caesura
+  utils
+  target 'MiddlewaresTests'
+end
+
+abstract_target 'Features' do
+  caesura
+  leash
+  utils
+  ui
+  rx
+
+  target 'List' do
+    project 'Features/List/List'
+    target 'ListTests'
+  end
+
+  target 'Tab' do
+    project 'Features/Tab/Tab'
+    target 'TabTests'
+  end
+
+  target 'TabOne' do
+    project 'Features/TabOne/TabOne'
+    target 'TabOneTests'
+  end
+
+  target 'TabTwo' do
+    project 'Features/TabTwo/TabTwo'
+    target 'TabTwoTests'
+  end
+
+  target 'Generics' do
+    project 'Features/Generics/Generics'
+    target 'GenericsTests'
+  end
+end

@@ -1,0 +1,6 @@
+ignore:
+  - Source/StandardAction
+  - Source/Middlewares
+  - Source/ReRxSwift
+  - Example
+  - Tests

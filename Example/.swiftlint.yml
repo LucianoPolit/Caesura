@@ -1,0 +1,19 @@
+disabled_rules:
+  - trailing_whitespace
+  - identifier_name
+  - large_tuple
+  - opening_brace
+opt_in_rules:
+  - multiline_arguments
+  - multiline_parameters
+cyclomatic_complexity: 12
+function_parameter_count: 6
+function_body_length: 60
+file_length: 500
+included:
+  - ../Source
+  - Main
+  - API
+  - Common
+  - Middlewares
+  - Features
