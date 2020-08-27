@@ -37,7 +37,9 @@ target 'Example' do
   utils
   ui
   rx
-  target 'Tests'
+  target 'Tests' do
+    tests
+  end
 end
 
 target 'API' do
