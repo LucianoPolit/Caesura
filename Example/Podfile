@@ -26,6 +26,11 @@ def rx
   pod 'RxDataSources', '~> 4.0'
 end
 
+def tests
+  pod 'Nimble', '~> 7.0'
+  pod 'AwesomeUtilitiesTests', '~> 1.8'
+end
+
 target 'Example' do
   caesura
   leash
@@ -65,7 +70,9 @@ abstract_target 'Features' do
 
   target 'List' do
     project 'Features/List/List'
-    target 'ListTests'
+    target 'ListTests' do
+      tests
+    end
   end
 
   target 'Tab' do
