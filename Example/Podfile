@@ -88,3 +88,9 @@ abstract_target 'Features' do
     target 'GenericsTests'
   end
 end
+
+target 'CommonTests' do
+  project 'CommonTests/CommonTests'
+  caesura
+  leash
+end
