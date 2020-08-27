@@ -20,6 +20,104 @@
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A28407A124E9F44F00C487B0"
+               BuildableName = "CommonTests.xctest"
+               BlueprintName = "CommonTests"
+               ReferencedContainer = "container:Common/Common.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A239F54D24EA3F2100D1E621"
+               BuildableName = "MiddlewaresTests.xctest"
+               BlueprintName = "MiddlewaresTests"
+               ReferencedContainer = "container:Middlewares/Middlewares.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A284080A24EA12F500C487B0"
+               BuildableName = "ListTests.xctest"
+               BlueprintName = "ListTests"
+               ReferencedContainer = "container:Features/List/List.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A28406C324E9EA8400C487B0"
+               BuildableName = "TabTests.xctest"
+               BlueprintName = "TabTests"
+               ReferencedContainer = "container:Features/Tab/Tab.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A28406F624E9EE2800C487B0"
+               BuildableName = "TabOneTests.xctest"
+               BlueprintName = "TabOneTests"
+               ReferencedContainer = "container:Features/TabOne/TabOne.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A284071A24E9EE4200C487B0"
+               BuildableName = "TabTwoTests.xctest"
+               BlueprintName = "TabTwoTests"
+               ReferencedContainer = "container:Features/TabTwo/TabTwo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A2A4D84C24EB884A0064FB72"
+               BuildableName = "GenericsTests.xctest"
+               BlueprintName = "GenericsTests"
+               ReferencedContainer = "container:Features/Generics/Generics.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -47,76 +145,6 @@
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
                ReferencedContainer = "container:Example.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A28407A124E9F44F00C487B0"
-               BuildableName = "CommonTests.xctest"
-               BlueprintName = "CommonTests"
-               ReferencedContainer = "container:Common/Common.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A239F54D24EA3F2100D1E621"
-               BuildableName = "MiddlewaresTests.xctest"
-               BlueprintName = "MiddlewaresTests"
-               ReferencedContainer = "container:Middlewares/Middlewares.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A284080A24EA12F500C487B0"
-               BuildableName = "ListTests.xctest"
-               BlueprintName = "ListTests"
-               ReferencedContainer = "container:Features/List/List.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A28406C324E9EA8400C487B0"
-               BuildableName = "TabTests.xctest"
-               BlueprintName = "TabTests"
-               ReferencedContainer = "container:Features/Tab/Tab.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A28406F624E9EE2800C487B0"
-               BuildableName = "TabOneTests.xctest"
-               BlueprintName = "TabOneTests"
-               ReferencedContainer = "container:Features/TabOne/TabOne.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A284071A24E9EE4200C487B0"
-               BuildableName = "TabTwoTests.xctest"
-               BlueprintName = "TabTwoTests"
-               ReferencedContainer = "container:Features/TabTwo/TabTwo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A2A4D84C24EB884A0064FB72"
-               BuildableName = "GenericsTests.xctest"
-               BlueprintName = "GenericsTests"
-               ReferencedContainer = "container:Features/Generics/Generics.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
