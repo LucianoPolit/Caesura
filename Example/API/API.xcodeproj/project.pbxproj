@@ -21,7 +21,6 @@
 		144B93563837EE14065CBADC /* Pods-Whatever-API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whatever-API.debug.xcconfig"; path = "Target Support Files/Pods-Whatever-API/Pods-Whatever-API.debug.xcconfig"; sourceTree = "<group>"; };
 		2AA1F8AA8EBA0CD181798ED1 /* Pods_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBA60FA2FB7E6B7A72A7188 /* Pods-API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API.release.xcconfig"; path = "Target Support Files/Pods-API/Pods-API.release.xcconfig"; sourceTree = "<group>"; };
-		A239F59724EA489C00D1E621 /* DELETE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DELETE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A28407C924E9F5EA00C487B0 /* API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A28407CC24E9F5EA00C487B0 /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		A28407CD24E9F5EA00C487B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,7 +107,6 @@
 		E739447BD7DBACD69056AB3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A239F59724EA489C00D1E621 /* DELETE.framework */,
 				2AA1F8AA8EBA0CD181798ED1 /* Pods_API.framework */,
 			);
 			name = Frameworks;
