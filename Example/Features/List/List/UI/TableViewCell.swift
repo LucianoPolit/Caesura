@@ -1,5 +1,5 @@
 //
-//  ExampleTableViewCell.swift
+//  TableViewCell.swift
 //  List
 //
 //  Created by Luciano Polit on 8/16/20.

@@ -12,7 +12,7 @@ import AwesomeUtilities
 
 public class LoggerMiddleware: Caesura.LoggerMiddleware {
     
-    override public func log(
+    public override func log(
         _ action: Action
     ) {
         if action is TimelineCompletionAction { return }

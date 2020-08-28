@@ -42,7 +42,9 @@ open class ViewController: UIViewController, HasDismissHandler, CanDismissProgra
         _ animated: Bool
     ) {
         super.viewWillAppear(animated)
-        guard navigationController == nil else { return }
+        guard navigationController == nil,
+            tabBarController == nil
+            else { return }
         dismissHandler.listen()
     }
     

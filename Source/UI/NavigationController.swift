@@ -30,6 +30,9 @@ import Caesura
 
 open class NavigationController: UINavigationController, HasDismissHandler, CanDismissProgrammatically {
     
+    private var origin: NavigationCompletionActionOrigin = .user
+    private var shownViewControllers: [UIViewController] = []
+    
     open lazy var dismissHandler = DismissHandler(
         viewController: self,
         manager: manager
@@ -37,9 +40,6 @@ open class NavigationController: UINavigationController, HasDismissHandler, CanD
     open var manager: Manager {
         return .main
     }
-    
-    private var shownViewControllers: [UIViewController] = []
-    private var origin: NavigationCompletionActionOrigin = .user
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,8 @@ open class NavigationController: UINavigationController, HasDismissHandler, CanD
         _ animated: Bool
     ) {
         super.viewWillAppear(animated)
+        origin = .user
+        shownViewControllers = viewControllers
         guard tabBarController == nil else { return }
         dismissHandler.listen()
     }
@@ -58,16 +60,30 @@ open class NavigationController: UINavigationController, HasDismissHandler, CanD
         _ viewControllers: [UIViewController],
         animated: Bool
     ) {
-        if !viewControllers.isEmpty,
-            viewControllers != self.viewControllers {
+        defer {
+            super.setViewControllers(
+                viewControllers,
+                animated: animated
+            )
+        }
+        
+        guard !viewControllers.isEmpty,
+            viewControllers != self.viewControllers
+            else { return }
+
+        if viewControllers.last == self.viewControllers.last {
+            manager.store.dispatch(
+                NavigationCompletionAction.setNavigation(
+                    to: viewControllers,
+                    previous: shownViewControllers
+                )
+            )
+        } else {
             origin = .code
         }
-        super.setViewControllers(
-            viewControllers,
-            animated: animated
-        )
     }
     
+    @discardableResult
     open override func popToViewController(
         _ viewController: UIViewController,
         animated: Bool
@@ -82,6 +98,7 @@ open class NavigationController: UINavigationController, HasDismissHandler, CanD
         return viewControllers
     }
     
+    @discardableResult
     open override func popToRootViewController(
         animated: Bool
     ) -> [UIViewController]? {
@@ -121,18 +138,17 @@ extension NavigationController: UINavigationControllerDelegate {
         didShow viewController: UIViewController,
         animated: Bool
     ) {
-        defer {
-            origin = .user
-            shownViewControllers = viewControllers
+        guard shownViewControllers != viewControllers else { return }
+        let dispatch = { (action: NavigationCompletionAction) in
+            self.origin = .user
+            self.shownViewControllers = self.viewControllers
+            self.manager.store.dispatch(action)
         }
-        guard !shownViewControllers.isEmpty,
-            shownViewControllers != viewControllers
-            else { return }
         
         if shownViewControllers.count == viewControllers.count - 1,
             shownViewControllers == Array(viewControllers[0 ..< viewControllers.count - 1]),
             let pushedViewController = viewControllers.last {
-            manager.store.dispatch(
+            dispatch(
                 NavigationCompletionAction.push(
                     pushedViewController
                 )
@@ -140,14 +156,14 @@ extension NavigationController: UINavigationControllerDelegate {
         } else if shownViewControllers.count == viewControllers.count + 1,
             Array(shownViewControllers[0 ..< shownViewControllers.count - 1]) == viewControllers,
             let lastViewController = shownViewControllers.last {
-            manager.store.dispatch(
+            dispatch(
                 NavigationCompletionAction.pop(
                     lastViewController,
                     origin: origin
                 )
             )
         } else {
-            manager.store.dispatch(
+            dispatch(
                 NavigationCompletionAction.setNavigation(
                     to: viewControllers,
                     previous: shownViewControllers

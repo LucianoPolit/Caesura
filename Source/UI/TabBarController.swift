@@ -44,12 +44,12 @@ open class TabBarController: UITabBarController, HasDismissHandler, CanDismissPr
     }
     
     open override func viewWillAppear(
-           _ animated: Bool
-       ) {
-           super.viewWillAppear(animated)
-           guard navigationController == nil else { return }
-           dismissHandler.listen()
-       }
+        _ animated: Bool
+    ) {
+        super.viewWillAppear(animated)
+        guard navigationController == nil else { return }
+        dismissHandler.listen()
+    }
     
 }
 
@@ -57,23 +57,20 @@ extension TabBarController: UITabBarControllerDelegate {
     
     open func tabBarController(
         _ tabBarController: UITabBarController,
-        shouldSelect viewController: UIViewController
-    ) -> Bool {
+        didSelect viewController: UIViewController
+    ) {
         guard let index = viewControllers?.firstIndex(of: viewController),
             let selectedViewController = selectedViewController
-            else { return true }
-        defer {
-            manager.store.dispatch(
-                NavigationCompletionAction.selectTab(
-                    viewController,
-                    at: index,
-                    previous: selectedViewController,
-                    previousIndex: selectedIndex,
-                    origin: .user
-                )
+            else { return }
+        manager.store.dispatch(
+            NavigationCompletionAction.selectTab(
+                viewController,
+                at: index,
+                previous: selectedViewController,
+                previousIndex: selectedIndex,
+                origin: .user
             )
-        }
-        return true
+        )
     }
     
 }
