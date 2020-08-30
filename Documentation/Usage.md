@@ -340,7 +340,7 @@ NavigationAction.dismissToViewController -> ... -> [NavigationCompletionAction.d
 NavigationAction.dismissToRootViewController -> ... -> [NavigationCompletionAction.dismiss]
 
 NavigationAction.setNavigation -> ... -> NavigationCompletionAction.setNavigation
-NavigationAction.push -> ... -> NavigationCompletionAction.present
+NavigationAction.push -> ... -> NavigationCompletionAction.push
 NavigationAction.pop -> ... -> NavigationCompletionAction.pop
 NavigationAction.popToViewController -> ... -> NavigationCompletionAction.setNavigation
 NavigationAction.popToRootViewController -> ... -> NavigationCompletionAction.setNavigation
