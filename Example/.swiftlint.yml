@@ -9,7 +9,6 @@ opt_in_rules:
 cyclomatic_complexity: 12
 function_parameter_count: 6
 function_body_length: 60
-file_length: 500
 included:
   - ../Source
   - Main
