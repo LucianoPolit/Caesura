@@ -208,12 +208,7 @@ private extension NavigationMiddleware {
         dispatch: DispatchFunction
     ) {
         guard let topTabBarController = topTabBarController else { return }
-        
         let viewControllers = topTabBarController.viewControllers ?? []
-        topTabBarController.setViewControllers(
-            viewControllers,
-            animated: false
-        )
         
         switch action {
         case .start,
@@ -223,16 +218,9 @@ private extension NavigationMiddleware {
              .popToViewController, .popToRootViewController:
             break
         case .setTabs(let viewControllers, let animated):
-            let previousViewControllers = topTabBarController.viewControllers ?? []
             topTabBarController.setViewControllers(
-                viewControllers.isEmpty ? [.empty] : viewControllers,
+                viewControllers,
                 animated: animated
-            )
-            dispatch(
-                NavigationCompletionAction.setTabs(
-                    viewControllers,
-                    previous: previousViewControllers
-                )
             )
         case .insertTab(let viewController, let insertionOrder, let animated):
             let index = insertionOrder.value(
@@ -240,96 +228,31 @@ private extension NavigationMiddleware {
             )
             guard index >= 0 && index <= viewControllers.count else { return }
             topTabBarController.setViewControllers(
-                viewControllers
-                    .with {
-                        $0.remove(.empty)
-                    }
-                    .inserting(
-                        viewController,
-                        at: index
-                    ),
-                animated: animated
-            )
-            dispatch(
-                NavigationCompletionAction.insertTab(
+                viewControllers.inserting(
                     viewController,
                     at: index
-                )
+                ),
+                animated: animated
             )
         case .removeTab(let viewController, let animated):
             guard let index = viewControllers.firstIndex(of: viewController) else { return }
-            if let viewController = viewControllers.removing(at: index).first,
-                topTabBarController.selectedIndex == index {
-                dispatch(
-                    NavigationAction.selectTab(
-                        viewController,
-                        animated: animated
-                    )
-                )
-            }
             topTabBarController.setViewControllers(
-                viewControllers
-                    .removing(at: index)
-                    .with {
-                        guard $0.isEmpty else { return }
-                        $0.append(.empty)
-                    },
+                viewControllers.removing(
+                    at: index
+                ),
                 animated: animated
             )
-            dispatch(
-                NavigationCompletionAction.removeTab(
-                    viewController,
-                    at: index
-                )
-            )
-        case .selectTab, .selectTabAtIndex:
-            handleTabSelectionAction(
-                action,
-                dispatch: dispatch
-            )
-        }
-    }
-    
-    func handleTabSelectionAction(
-        _ action: NavigationAction,
-        dispatch: DispatchFunction
-    ) {
-        guard let topTabBarController = topTabBarController,
-            let viewControllers = topTabBarController.viewControllers
-            else { return }
-        
-        switch action {
-        case .start,
-             .set, .present, .dismiss,
-             .dismissToViewController, .dismissToRootViewController,
-             .setNavigation, .push, .pop,
-             .popToViewController, .popToRootViewController,
-             .setTabs, .insertTab, .removeTab:
-            break
-        case .selectTab(let viewController, _):
-            let selectedIndex = topTabBarController.selectedIndex
-            guard let index = viewControllers.firstIndex(of: viewController),
-                let selectedViewController = viewControllers[safe: selectedIndex]
-                else { return }
-            topTabBarController.selectedIndex = index
-            dispatch(
-                NavigationCompletionAction.selectTab(
-                    viewController,
-                    at: index,
-                    previous: selectedViewController,
-                    previousIndex: selectedIndex,
-                    origin: .code
-                )
-            )
-        case .selectTabAtIndex(let index, let animated):
-            guard let viewController = viewControllers[safe: index] else { return }
-            handleTabSelectionAction(
-                .selectTab(
-                    viewController,
+        case .selectTab(let viewController, let animated):
+            guard let index = viewControllers.firstIndex(of: viewController) else { return }
+            handleTabAction(
+                .selectTabAtIndex(
+                    index,
                     animated: animated
                 ),
                 dispatch: dispatch
             )
+        case .selectTabAtIndex(let index, _):
+            topTabBarController.selectedIndex = index
         }
     }
     
@@ -400,12 +323,6 @@ private extension UIViewController {
             )
         }
     }
-    
-}
-
-private extension UIViewController {
-    
-    static let empty = UIViewController()
     
 }
 

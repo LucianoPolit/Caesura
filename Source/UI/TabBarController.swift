@@ -30,12 +30,33 @@ import Caesura
 
 open class TabBarController: UITabBarController, HasDismissHandler, CanDismissProgrammatically {
     
+    private var origin: NavigationCompletionActionOrigin = .user
+    private weak var previousSelectedViewController: UIViewController?
+    
     open lazy var dismissHandler = DismissHandler(
         viewController: self,
         manager: manager
     )
     open var manager: Manager {
         return .main
+    }
+    
+    open override var selectedIndex: Int {
+        willSet {
+            previousSelectedViewController =
+                viewController(at: selectedIndex) ?? previousSelectedViewController
+        }
+        didSet {
+            guard let viewController = viewController(at: selectedIndex),
+                selectedIndex != oldValue,
+                oldValue != .max
+                else { return }
+            origin = .code
+            tabBarController(
+                self,
+                didSelect: viewController
+            )
+        }
     }
     
     open override func viewDidLoad() {
@@ -51,26 +72,123 @@ open class TabBarController: UITabBarController, HasDismissHandler, CanDismissPr
         dismissHandler.listen()
     }
     
+    open override func setViewControllers(
+        _ viewControllers: [UIViewController]?,
+        animated: Bool
+    ) {
+        defer {
+            super.setViewControllers(
+                {
+                    guard var viewControllers = viewControllers else { return nil }
+                    if viewControllers.isEmpty {
+                        viewControllers = [.empty]
+                    }
+                    if let index = viewControllers.firstIndex(of: .empty),
+                        viewControllers.count > 1 {
+                        viewControllers.remove(at: index)
+                    }
+                    return viewControllers
+                }(),
+                animated: animated
+            )
+        }
+        
+        guard let viewControllers = viewControllers,
+            !viewControllers.isEmpty || self.viewControllers != nil,
+            viewControllers != self.viewControllers
+            else { return }
+        
+        if let selectedViewController = selectedViewController,
+            viewControllers.firstIndex(
+                of: selectedViewController
+            ) == nil {
+            selectedIndex = 0
+        }
+        
+        let previousViewControllers = self.viewControllers ?? []
+        let insertedViewControllers = viewControllers.filter {
+            !previousViewControllers.contains($0)
+        }
+        let removedViewControllers = previousViewControllers.filter {
+            !viewControllers.contains($0)
+        }
+        
+        if insertedViewControllers.count == 1,
+            removedViewControllers.isEmpty,
+            let index = viewControllers.firstIndex(
+                of: insertedViewControllers[0]
+            ) {
+            manager.store.dispatch(
+                NavigationCompletionAction.insertTab(
+                    insertedViewControllers[0],
+                    at: index
+                )
+            )
+        } else if removedViewControllers.count == 1,
+            insertedViewControllers.isEmpty,
+            let index = previousViewControllers.firstIndex(
+                of: removedViewControllers[0]
+            ) {
+            manager.store.dispatch(
+                NavigationCompletionAction.removeTab(
+                    removedViewControllers[0],
+                    at: index
+                )
+            )
+        } else {
+            manager.store.dispatch(
+                NavigationCompletionAction.setTabs(
+                    viewControllers,
+                    previous: previousViewControllers
+                )
+            )
+        }
+    }
+    
 }
 
 extension TabBarController: UITabBarControllerDelegate {
+    
+    public func tabBarController(
+        _ tabBarController: UITabBarController,
+        shouldSelect viewController: UIViewController
+    ) -> Bool {
+        previousSelectedViewController = selectedViewController
+        return true
+    }
     
     open func tabBarController(
         _ tabBarController: UITabBarController,
         didSelect viewController: UIViewController
     ) {
+        defer { origin = .user }
         guard let index = viewControllers?.firstIndex(of: viewController),
-            let selectedViewController = selectedViewController
+            let previousSelectedViewController = previousSelectedViewController
             else { return }
         manager.store.dispatch(
             NavigationCompletionAction.selectTab(
                 viewController,
                 at: index,
-                previous: selectedViewController,
+                previous: previousSelectedViewController,
                 previousIndex: selectedIndex,
-                origin: .user
+                origin: origin
             )
         )
     }
+    
+}
+
+private extension TabBarController {
+    
+    func viewController(at index: Int) -> UIViewController? {
+        guard let viewControllers = viewControllers else { return nil }
+        return viewControllers.indices.contains(index) ? viewControllers[index] : nil
+    }
+    
+}
+
+private extension UIViewController {
+    
+    static let empty = UIViewController()
     
 }
