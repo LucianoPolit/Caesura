@@ -228,18 +228,17 @@ private extension NavigationMiddleware {
             )
             guard index >= 0 && index <= viewControllers.count else { return }
             topTabBarController.setViewControllers(
-                viewControllers.inserting(
-                    viewController,
-                    at: index
-                ),
+                viewControllers.with {
+                    $0.insert(viewController, at: index)
+                },
                 animated: animated
             )
         case .removeTab(let viewController, let animated):
             guard let index = viewControllers.firstIndex(of: viewController) else { return }
             topTabBarController.setViewControllers(
-                viewControllers.removing(
-                    at: index
-                ),
+                viewControllers.with {
+                    $0.remove(at: index)
+                },
                 animated: animated
             )
         case .selectTab(let viewController, let animated):

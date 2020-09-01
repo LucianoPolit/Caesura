@@ -56,7 +56,7 @@ open class Manager {
             return state
         },
         middlewares: {
-            middlewares[.low]?.prepend(
+            middlewares[.low]?.insert(
                 contentsOf: [
                     ModuleMapperMiddleware(
                         mappers: moduleMappers
@@ -71,7 +71,8 @@ open class Manager {
                             return $0(api)
                         }
                     )
-                ]
+                ] as [Middleware],
+                at: 0
             )
             return [
                 middlewares[.high]!,
