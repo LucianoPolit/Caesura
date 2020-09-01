@@ -25,7 +25,9 @@ class MockManager: Manager {
                 self.actionHandler($0)
                 return $1 ?? .init()
             },
-            middlewares: []
+            state: nil,
+            middleware: [],
+            automaticallySkipsRepeats: false
         )
     }
     

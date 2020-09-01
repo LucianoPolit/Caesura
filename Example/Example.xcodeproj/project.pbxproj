@@ -10,6 +10,17 @@
 		A20B1C1724DDE2BC000AE004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20B1C1624DDE2BC000AE004 /* AppDelegate.swift */; };
 		A20B1C2024DDE2BD000AE004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20B1C1F24DDE2BD000AE004 /* Assets.xcassets */; };
 		A20B1C2324DDE2BD000AE004 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20B1C2124DDE2BD000AE004 /* LaunchScreen.storyboard */; };
+		A20EAD1B24FD7DAD004FB609 /* ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD1A24FD7DAD004FB609 /* ManagerTests.swift */; };
+		A20EAD1D24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD1C24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift */; };
+		A20EAD1F24FEE0AF004FB609 /* MockMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD1E24FEE0AF004FB609 /* MockMiddleware.swift */; };
+		A20EAD2324FEE0F1004FB609 /* MockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD2224FEE0F1004FB609 /* MockAction.swift */; };
+		A20EAD2524FEE0F8004FB609 /* MockState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD2424FEE0F8004FB609 /* MockState.swift */; };
+		A20EAD2724FEE0FF004FB609 /* MockReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD2624FEE0FF004FB609 /* MockReducer.swift */; };
+		A20EAD2924FEE108004FB609 /* MockNavigationActionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD2824FEE108004FB609 /* MockNavigationActionMapper.swift */; };
+		A20EAD2B24FEE113004FB609 /* MockAPIActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD2A24FEE113004FB609 /* MockAPIActionDispatcher.swift */; };
+		A20EAD2D24FEE11B004FB609 /* MockModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD2C24FEE11B004FB609 /* MockModule.swift */; };
+		A20EAD2F24FEE126004FB609 /* MockActionRegistrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD2E24FEE126004FB609 /* MockActionRegistrable.swift */; };
+		A20EAD3124FEE12D004FB609 /* MockStateRegistrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD3024FEE12D004FB609 /* MockStateRegistrable.swift */; };
 		A275AE3E24E0A6BB004C4FD6 /* AppModuleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */; };
 		A2A4D89624EDB45D0064FB72 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89124EDB45D0064FB72 /* Common.framework */; };
 		A2A4D89824EDB45D0064FB72 /* Generics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89224EDB45D0064FB72 /* Generics.framework */; };
@@ -45,6 +56,17 @@
 		A20B1C2424DDE2BD000AE004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20B1C2924DDE2BE000AE004 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20B1C2F24DDE2BE000AE004 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A20EAD1A24FD7DAD004FB609 /* ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTests.swift; sourceTree = "<group>"; };
+		A20EAD1C24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationCompletionAction+CaseIterable.swift"; sourceTree = "<group>"; };
+		A20EAD1E24FEE0AF004FB609 /* MockMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMiddleware.swift; sourceTree = "<group>"; };
+		A20EAD2224FEE0F1004FB609 /* MockAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAction.swift; sourceTree = "<group>"; };
+		A20EAD2424FEE0F8004FB609 /* MockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockState.swift; sourceTree = "<group>"; };
+		A20EAD2624FEE0FF004FB609 /* MockReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReducer.swift; sourceTree = "<group>"; };
+		A20EAD2824FEE108004FB609 /* MockNavigationActionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationActionMapper.swift; sourceTree = "<group>"; };
+		A20EAD2A24FEE113004FB609 /* MockAPIActionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIActionDispatcher.swift; sourceTree = "<group>"; };
+		A20EAD2C24FEE11B004FB609 /* MockModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModule.swift; sourceTree = "<group>"; };
+		A20EAD2E24FEE126004FB609 /* MockActionRegistrable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockActionRegistrable.swift; sourceTree = "<group>"; };
+		A20EAD3024FEE12D004FB609 /* MockStateRegistrable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStateRegistrable.swift; sourceTree = "<group>"; };
 		A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModuleMapper.swift; sourceTree = "<group>"; };
 		A2A4D89124EDB45D0064FB72 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A4D89224EDB45D0064FB72 /* Generics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Generics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,11 +162,28 @@
 			children = (
 				A2ECD85424F9716F00458246 /* Utils */,
 				A2ECD85124F9714900458246 /* Mocks */,
+				A20EAD1624FD7D44004FB609 /* Core */,
 				A2ECD84A24F9577600458246 /* UI */,
 				A20B1C2F24DDE2BE000AE004 /* Info.plist */,
 			);
 			name = Tests;
 			path = ../Tests;
+			sourceTree = "<group>";
+		};
+		A20EAD1624FD7D44004FB609 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A20EAD1724FD7D4F004FB609 /* Middlewares */,
+				A20EAD1A24FD7DAD004FB609 /* ManagerTests.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A20EAD1724FD7D4F004FB609 /* Middlewares */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Middlewares;
 			sourceTree = "<group>";
 		};
 		A2ECD84A24F9577600458246 /* UI */ = {
@@ -163,6 +202,15 @@
 			isa = PBXGroup;
 			children = (
 				A2ECD85224F9715300458246 /* MockManager.swift */,
+				A20EAD1E24FEE0AF004FB609 /* MockMiddleware.swift */,
+				A20EAD2224FEE0F1004FB609 /* MockAction.swift */,
+				A20EAD2424FEE0F8004FB609 /* MockState.swift */,
+				A20EAD2624FEE0FF004FB609 /* MockReducer.swift */,
+				A20EAD2824FEE108004FB609 /* MockNavigationActionMapper.swift */,
+				A20EAD2A24FEE113004FB609 /* MockAPIActionDispatcher.swift */,
+				A20EAD2C24FEE11B004FB609 /* MockModule.swift */,
+				A20EAD2E24FEE126004FB609 /* MockActionRegistrable.swift */,
+				A20EAD3024FEE12D004FB609 /* MockStateRegistrable.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -171,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				A2ECD86624FAA0AB00458246 /* TestCase.swift */,
+				A20EAD1C24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -317,13 +366,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2ECD85824F9719000458246 /* MockManager.swift in Sources */,
+				A20EAD2B24FEE113004FB609 /* MockAPIActionDispatcher.swift in Sources */,
 				A2ECD86524F9799300458246 /* NavigationControllerTests.swift in Sources */,
 				A2ECD85724F9718A00458246 /* UIViewController+Utils.swift in Sources */,
+				A20EAD3124FEE12D004FB609 /* MockStateRegistrable.swift in Sources */,
+				A20EAD2324FEE0F1004FB609 /* MockAction.swift in Sources */,
 				A2ECD85B24F971AD00458246 /* TestableViewController.swift in Sources */,
 				A2ECD86824FAA0C100458246 /* TestCase.swift in Sources */,
 				A2ECD84D24F9591700458246 /* ViewControllerTests.swift in Sources */,
+				A20EAD2524FEE0F8004FB609 /* MockState.swift in Sources */,
+				A20EAD1F24FEE0AF004FB609 /* MockMiddleware.swift in Sources */,
+				A20EAD2F24FEE126004FB609 /* MockActionRegistrable.swift in Sources */,
+				A20EAD1D24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift in Sources */,
 				A2ECD85E24F9735600458246 /* DismissHandlerTests.swift in Sources */,
 				A2ECD86124F9797E00458246 /* TabBarControllerTests.swift in Sources */,
+				A20EAD2724FEE0FF004FB609 /* MockReducer.swift in Sources */,
+				A20EAD1B24FD7DAD004FB609 /* ManagerTests.swift in Sources */,
+				A20EAD2924FEE108004FB609 /* MockNavigationActionMapper.swift in Sources */,
+				A20EAD2D24FEE11B004FB609 /* MockModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
