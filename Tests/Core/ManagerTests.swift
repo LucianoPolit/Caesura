@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import XCTest
 import Nimble
 import Caesura
 
-class ManagerTests: XCTestCase { }
+class ManagerTests: TestCase { }
 
 extension ManagerTests {
     
