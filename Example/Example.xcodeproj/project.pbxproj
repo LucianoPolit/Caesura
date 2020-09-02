@@ -33,6 +33,7 @@
 		A20EAD592500372B004FB609 /* APIActionDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD582500372B004FB609 /* APIActionDispatcherTests.swift */; };
 		A20EAD5B25003844004FB609 /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5A25003844004FB609 /* TestError.swift */; };
 		A20EAD5D25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5C25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift */; };
+		A20EAD6125004320004FB609 /* ModuleMapperMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6025004320004FB609 /* ModuleMapperMiddlewareTests.swift */; };
 		A275AE3E24E0A6BB004C4FD6 /* AppModuleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */; };
 		A2A4D89624EDB45D0064FB72 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89124EDB45D0064FB72 /* Common.framework */; };
 		A2A4D89824EDB45D0064FB72 /* Generics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89224EDB45D0064FB72 /* Generics.framework */; };
@@ -91,6 +92,7 @@
 		A20EAD582500372B004FB609 /* APIActionDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActionDispatcherTests.swift; sourceTree = "<group>"; };
 		A20EAD5A25003844004FB609 /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
 		A20EAD5C25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActionDispatcherMiddlewareTests.swift; sourceTree = "<group>"; };
+		A20EAD6025004320004FB609 /* ModuleMapperMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleMapperMiddlewareTests.swift; sourceTree = "<group>"; };
 		A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModuleMapper.swift; sourceTree = "<group>"; };
 		A2A4D89124EDB45D0064FB72 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A4D89224EDB45D0064FB72 /* Generics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Generics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				A20EAD54250036F8004FB609 /* API */,
+				A20EAD5F250040E5004FB609 /* Modules */,
 				A20EAD55250036FD004FB609 /* Reusable */,
 			);
 			path = Middlewares;
@@ -232,6 +235,14 @@
 				A20EAD4C2500064B004FB609 /* ActionMapperMiddlewareTests.swift */,
 			);
 			path = Reusable;
+			sourceTree = "<group>";
+		};
+		A20EAD5F250040E5004FB609 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				A20EAD6025004320004FB609 /* ModuleMapperMiddlewareTests.swift */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		A2ECD84A24F9577600458246 /* UI */ = {
@@ -425,6 +436,7 @@
 				A20EAD3124FEE12D004FB609 /* MockStateRegistrable.swift in Sources */,
 				A20EAD5B25003844004FB609 /* TestError.swift in Sources */,
 				A2ECD85B24F971AD00458246 /* TestableViewController.swift in Sources */,
+				A20EAD6125004320004FB609 /* ModuleMapperMiddlewareTests.swift in Sources */,
 				A2ECD86824FAA0C100458246 /* TestCase.swift in Sources */,
 				A20EAD5D25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift in Sources */,
 				A2ECD84D24F9591700458246 /* ViewControllerTests.swift in Sources */,
