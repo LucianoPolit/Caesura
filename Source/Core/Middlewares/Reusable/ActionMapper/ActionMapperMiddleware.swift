@@ -56,8 +56,8 @@ open class ActionMapperMiddleware: Middleware {
     ) {
         let mappedActions = mappers
             .compactMap { $0.map(action) }
-            .first
-        (mappedActions ?? [action]).forEach {
+            .reduce([], +)
+        (mappedActions.isEmpty ? [action] : mappedActions).forEach {
             next($0)
         }
     }
