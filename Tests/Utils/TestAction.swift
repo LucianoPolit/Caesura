@@ -12,5 +12,8 @@ import Caesura
 enum TestAction: Action, Equatable {
     case start
     case fetch
+    case loading
+    case success(Int)
+    case failure(TestError)
     case stop
 }

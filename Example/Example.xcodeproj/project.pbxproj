@@ -30,6 +30,9 @@
 		A20EAD4F250009DA004FB609 /* ActionDispatcherMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD4A2500063B004FB609 /* ActionDispatcherMiddlewareTests.swift */; };
 		A20EAD5125000BC7004FB609 /* MockActionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5025000BC7004FB609 /* MockActionMapper.swift */; };
 		A20EAD5325000BD1004FB609 /* MockActionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5225000BD1004FB609 /* MockActionDispatcher.swift */; };
+		A20EAD592500372B004FB609 /* APIActionDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD582500372B004FB609 /* APIActionDispatcherTests.swift */; };
+		A20EAD5B25003844004FB609 /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5A25003844004FB609 /* TestError.swift */; };
+		A20EAD5D25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5C25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift */; };
 		A275AE3E24E0A6BB004C4FD6 /* AppModuleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */; };
 		A2A4D89624EDB45D0064FB72 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89124EDB45D0064FB72 /* Common.framework */; };
 		A2A4D89824EDB45D0064FB72 /* Generics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89224EDB45D0064FB72 /* Generics.framework */; };
@@ -85,6 +88,9 @@
 		A20EAD4C2500064B004FB609 /* ActionMapperMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMapperMiddlewareTests.swift; sourceTree = "<group>"; };
 		A20EAD5025000BC7004FB609 /* MockActionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockActionMapper.swift; sourceTree = "<group>"; };
 		A20EAD5225000BD1004FB609 /* MockActionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockActionDispatcher.swift; sourceTree = "<group>"; };
+		A20EAD582500372B004FB609 /* APIActionDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActionDispatcherTests.swift; sourceTree = "<group>"; };
+		A20EAD5A25003844004FB609 /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
+		A20EAD5C25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActionDispatcherMiddlewareTests.swift; sourceTree = "<group>"; };
 		A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModuleMapper.swift; sourceTree = "<group>"; };
 		A2A4D89124EDB45D0064FB72 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A4D89224EDB45D0064FB72 /* Generics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Generics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,10 +210,28 @@
 		A20EAD1724FD7D4F004FB609 /* Middlewares */ = {
 			isa = PBXGroup;
 			children = (
+				A20EAD54250036F8004FB609 /* API */,
+				A20EAD55250036FD004FB609 /* Reusable */,
+			);
+			path = Middlewares;
+			sourceTree = "<group>";
+		};
+		A20EAD54250036F8004FB609 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A20EAD582500372B004FB609 /* APIActionDispatcherTests.swift */,
+				A20EAD5C25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A20EAD55250036FD004FB609 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
 				A20EAD4A2500063B004FB609 /* ActionDispatcherMiddlewareTests.swift */,
 				A20EAD4C2500064B004FB609 /* ActionMapperMiddlewareTests.swift */,
 			);
-			path = Middlewares;
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		A2ECD84A24F9577600458246 /* UI */ = {
@@ -246,6 +270,7 @@
 				A20EAD4124FFE651004FB609 /* TestAction.swift */,
 				A20EAD4324FFE65E004FB609 /* TestState.swift */,
 				A20EAD4524FFE69C004FB609 /* TestAPI.swift */,
+				A20EAD5A25003844004FB609 /* TestError.swift */,
 				A20EAD1C24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift */,
 			);
 			path = Utils;
@@ -398,8 +423,10 @@
 				A2ECD86524F9799300458246 /* NavigationControllerTests.swift in Sources */,
 				A2ECD85724F9718A00458246 /* UIViewController+Utils.swift in Sources */,
 				A20EAD3124FEE12D004FB609 /* MockStateRegistrable.swift in Sources */,
+				A20EAD5B25003844004FB609 /* TestError.swift in Sources */,
 				A2ECD85B24F971AD00458246 /* TestableViewController.swift in Sources */,
 				A2ECD86824FAA0C100458246 /* TestCase.swift in Sources */,
+				A20EAD5D25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift in Sources */,
 				A2ECD84D24F9591700458246 /* ViewControllerTests.swift in Sources */,
 				A20EAD5125000BC7004FB609 /* MockActionMapper.swift in Sources */,
 				A20EAD4824FFE6B2004FB609 /* TestState.swift in Sources */,
@@ -411,6 +438,7 @@
 				A20EAD4F250009DA004FB609 /* ActionDispatcherMiddlewareTests.swift in Sources */,
 				A20EAD3624FEE922004FB609 /* ModuleTests.swift in Sources */,
 				A20EAD3D24FEE9B8004FB609 /* MiddlewareWrapperTests.swift in Sources */,
+				A20EAD592500372B004FB609 /* APIActionDispatcherTests.swift in Sources */,
 				A2ECD85E24F9735600458246 /* DismissHandlerTests.swift in Sources */,
 				A20EAD3724FEE927004FB609 /* StateTests.swift in Sources */,
 				A20EAD4924FFE6C0004FB609 /* TestAction.swift in Sources */,
