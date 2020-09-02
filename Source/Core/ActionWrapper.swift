@@ -24,7 +24,7 @@
 
 import Foundation
 
-public protocol ActionWrapperProtocol {
+public protocol ActionWrapperProtocol: Action {
     associatedtype Value
     init(_ value: Value)
 }
