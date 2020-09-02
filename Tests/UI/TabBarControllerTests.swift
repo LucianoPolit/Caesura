@@ -595,7 +595,7 @@ private extension TabBarController {
     static func toTestSelection(
         origin: NavigationCompletionActionOrigin,
         sameThanPrevious: @escaping () -> Bool = { false },
-        completion: @escaping () -> ()
+        completion: @escaping () -> Void
     ) -> TabBarController {
         let viewControllers = [
             UIViewController(),

@@ -110,7 +110,7 @@ extension ManagerTests {
         _ = Manager()
             .start()
             .register(
-                api: SomeAPI()
+                api: TestAPI()
             )
             .register(
                 middleware: { dispatch, state in
@@ -123,7 +123,7 @@ extension ManagerTests {
                 }
             )
             .register(
-                reducer: { (action: MockAction, state) in
+                reducer: { (action: TestAction, state) in
                     condition = true
                     return state
                 }
@@ -139,7 +139,7 @@ extension ManagerTests {
             )
             .start()
         
-        expect(condition).toEventuallyNot(beTrue())
+        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
     }
     
 }
@@ -157,7 +157,7 @@ extension ManagerTests {
                         case 0:
                             guard action == NavigationAction.self else { return fail() }
                         default:
-                            guard action == MockAction.self else { return fail() }
+                            guard action == TestAction.self else { return fail() }
                             done()
                         }
                     }
@@ -180,7 +180,7 @@ extension ManagerTests {
                     case 0:
                         guard action == NavigationAction.self else { return fail() }
                     case 1:
-                        guard action == MockAction.self else { return fail() }
+                        guard action == TestAction.self else { return fail() }
                     default:
                         condition = true
                     }
@@ -193,7 +193,7 @@ extension ManagerTests {
                 module: MockModule.self
             )
             .start()
-        expect(condition).toEventuallyNot(beTrue())
+        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
     }
     
     func testRegisterModuleStateType() {
@@ -201,7 +201,7 @@ extension ManagerTests {
             _ = Manager()
                 .register(
                     stateRegistrable: MockStateRegistrable { state in
-                        guard state == MockState.self else { return fail() }
+                        guard state == TestState.self else { return fail() }
                         done()
                     }
                 )
@@ -221,7 +221,7 @@ extension ManagerTests {
                     defer { number += 1 }
                     switch number {
                     case 0:
-                        guard state == MockState.self else { return fail() }
+                        guard state == TestState.self else { return fail() }
                     default:
                         condition = true
                     }
@@ -234,7 +234,7 @@ extension ManagerTests {
                 module: MockModule.self
             )
             .start()
-        expect(condition).toEventuallyNot(beTrue())
+        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
     }
     
     func testRegisterModuleReducer() {
@@ -254,7 +254,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -274,7 +274,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -289,7 +289,7 @@ extension ManagerTests {
             }
             Manager()
                 .register(
-                    api: SomeAPI()
+                    api: TestAPI()
                 )
                 .register(
                     module: MockModule.self
@@ -297,7 +297,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.fetch
+                    TestAction.fetch
                 )
         }
     }
@@ -310,18 +310,18 @@ extension ManagerTests {
         waitUntil { done in
             Manager()
                 .register(
-                    reducer: { (action: MockAction, state) in
+                    reducer: { (action: TestAction, state) in
                         expect(action) == .start
                         done()
                         return state.with {
-                            $0["some"] = MockState()
+                            $0["some"] = TestState()
                         }
                     }
                 )
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -335,14 +335,14 @@ extension ManagerTests {
             Manager()
                 .register(
                     middleware: MockMiddleware { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         done()
                     }
                 )
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -354,11 +354,11 @@ extension ManagerTests {
                 .register(
                     middlewares: [
                         MockMiddleware { action in
-                            guard case MockAction.start = action else { return }
+                            guard case TestAction.start = action else { return }
                             number += 1
                         },
                         MockMiddleware { action in
-                            guard case MockAction.start = action else { return }
+                            guard case TestAction.start = action else { return }
                             expect(number) == 1
                             done()
                         }
@@ -367,7 +367,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -378,7 +378,7 @@ extension ManagerTests {
             Manager()
                 .register(
                     middleware: MockMiddleware { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         expect(number) == 2
                         done()
                     },
@@ -386,7 +386,7 @@ extension ManagerTests {
                 )
                 .register(
                     middleware: MockMiddleware { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         expect(number) == 1
                         number += 1
                     },
@@ -394,7 +394,7 @@ extension ManagerTests {
                 )
                 .register(
                     middleware: MockMiddleware { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         expect(number) == 0
                         number += 1
                     },
@@ -403,7 +403,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -413,14 +413,14 @@ extension ManagerTests {
             Manager()
                 .register(
                     middleware: MockMiddleware.asFunction { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         done()
                     }
                 )
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -432,11 +432,11 @@ extension ManagerTests {
                 .register(
                     middlewares: [
                         MockMiddleware.asFunction { action in
-                            guard case MockAction.start = action else { return }
+                            guard case TestAction.start = action else { return }
                             number += 1
                         },
                         MockMiddleware.asFunction { action in
-                            guard case MockAction.start = action else { return }
+                            guard case TestAction.start = action else { return }
                             expect(number) == 1
                             done()
                         }
@@ -445,7 +445,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -456,7 +456,7 @@ extension ManagerTests {
             Manager()
                 .register(
                     middleware: MockMiddleware.asFunction { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         expect(number) == 2
                         done()
                     },
@@ -464,7 +464,7 @@ extension ManagerTests {
                 )
                 .register(
                     middleware: MockMiddleware.asFunction { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         expect(number) == 1
                         number += 1
                     },
@@ -472,7 +472,7 @@ extension ManagerTests {
                 )
                 .register(
                     middleware: MockMiddleware.asFunction { action in
-                        guard case MockAction.start = action else { return }
+                        guard case TestAction.start = action else { return }
                         expect(number) == 0
                         number += 1
                     },
@@ -481,7 +481,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -495,7 +495,7 @@ extension ManagerTests {
             Manager()
                 .register(
                     moduleMapper: { action in
-                        guard case MockAction.start = action else { return nil }
+                        guard case TestAction.start = action else { return nil }
                         done()
                         return [
                             .start(MockModule.self)
@@ -505,7 +505,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -515,7 +515,7 @@ extension ManagerTests {
             Manager()
                 .register(
                     moduleMapper: { action in
-                        guard case MockAction.start = action else { return nil }
+                        guard case TestAction.start = action else { return nil }
                         done()
                         return .start(MockModule.self)
                     } as ModuleMapperSingleReturn
@@ -523,7 +523,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -533,7 +533,7 @@ extension ManagerTests {
             Manager()
                 .register(
                     moduleMapper: { action in
-                        guard case MockAction.start = action else { return nil }
+                        guard case TestAction.start = action else { return nil }
                         done()
                         return [MockModule.self]
                     } as ModuleStarter
@@ -541,7 +541,7 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
@@ -551,7 +551,7 @@ extension ManagerTests {
             Manager()
                 .register(
                     moduleMapper: { action in
-                        guard case MockAction.start = action else { return nil }
+                        guard case TestAction.start = action else { return nil }
                         done()
                         return MockModule.self
                     } as ModuleStarterSingleReturn
@@ -559,11 +559,9 @@ extension ManagerTests {
                 .start()
                 .store
                 .dispatch(
-                    MockAction.start
+                    TestAction.start
                 )
         }
     }
     
 }
-
-private struct SomeAPI: API { }

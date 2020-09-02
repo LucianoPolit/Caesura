@@ -12,10 +12,10 @@ import ReSwift
 
 class MockMiddleware: Caesura.Middleware {
     
-    let actionHandler: (Action) -> ()
+    let actionHandler: (Action) -> Void
     
     init(
-        actionHandler: @escaping (Action) -> ()
+        actionHandler: @escaping (Action) -> Void
     ) {
         self.actionHandler = actionHandler
     }
@@ -37,7 +37,7 @@ class MockMiddleware: Caesura.Middleware {
 extension MockMiddleware {
     
     static func asFunction(
-        actionHandler: @escaping (Action) -> ()
+        actionHandler: @escaping (Action) -> Void
     ) -> ReSwift.Middleware<State> {
         return { dispatch, state in
             return { next in

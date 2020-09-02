@@ -11,8 +11,8 @@ import Caesura
 
 class MockModule: Module {
     
-    typealias StateType = MockState
-    typealias ActionType = MockAction
+    typealias StateType = TestState
+    typealias ActionType = TestAction
     
     static var initialState: StateType {
         return .init()

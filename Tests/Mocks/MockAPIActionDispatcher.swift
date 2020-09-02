@@ -9,14 +9,14 @@
 import Foundation
 import Caesura
 
-class MockAPIActionDispatcher: APIActionDispatcher<MockAction> {
+class MockAPIActionDispatcher: APIActionDispatcher<TestAction> {
     
     let api: API
-    let actionHandler: (MockAction) -> ()
+    let actionHandler: (TestAction) -> Void
     
     init(
         api: API,
-        actionHandler: @escaping (MockAction) -> ()
+        actionHandler: @escaping (TestAction) -> Void
     ) {
         self.api = api
         self.actionHandler = actionHandler

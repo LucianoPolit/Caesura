@@ -11,10 +11,10 @@ import Caesura
 
 class MockStateRegistrable: StateRegistrable {
     
-    let completion: (StateType.Type) -> ()
+    let completion: (StateType.Type) -> Void
     
     init(
-        completion: @escaping (StateType.Type) -> ()
+        completion: @escaping (StateType.Type) -> Void
     ) {
         self.completion = completion
     }

@@ -9,12 +9,12 @@
 import Foundation
 import Caesura
 
-class MockNavigationActionMapper: NavigationActionMapper<MockAction> {
+class MockNavigationActionMapper: NavigationActionMapper<TestAction> {
     
-    let actionHandler: (MockAction) -> ()
+    let actionHandler: (TestAction) -> Void
     
     init(
-        actionHandler: @escaping (MockAction) -> ()
+        actionHandler: @escaping (TestAction) -> Void
     ) {
         self.actionHandler = actionHandler
     }

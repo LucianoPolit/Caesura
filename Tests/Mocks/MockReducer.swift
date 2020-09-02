@@ -11,18 +11,18 @@ import Caesura
 
 class MockReducer {
     
-    let actionHandler: (MockAction) -> ()
+    let actionHandler: (TestAction) -> Void
     
     init(
-        actionHandler: @escaping (MockAction) -> ()
+        actionHandler: @escaping (TestAction) -> Void
     ) {
         self.actionHandler = actionHandler
     }
     
     func handleAction(
-        _ action: MockAction,
-        state: MockState
-    ) -> MockState {
+        _ action: TestAction,
+        state: TestState
+    ) -> TestState {
         actionHandler(action)
         return state
     }

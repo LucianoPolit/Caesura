@@ -1,15 +1,15 @@
 //
-//  MockAction.swift
+//  TestAction.swift
 //  Tests
 //
-//  Created by Luciano Polit on 9/1/20.
+//  Created by Luciano Polit on 9/2/20.
 //  Copyright © 2020 LucianoPolit. All rights reserved.
 //
 
 import Foundation
 import Caesura
 
-enum MockAction: Action, Equatable {
+enum TestAction: Action, Equatable {
     case start
     case fetch
     case stop

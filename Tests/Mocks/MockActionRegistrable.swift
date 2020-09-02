@@ -11,10 +11,10 @@ import Caesura
 
 class MockActionRegistrable: ActionRegistrable {
     
-    let completion: (Action.Type) -> ()
+    let completion: (Action.Type) -> Void
     
     init(
-        completion: @escaping (Action.Type) -> ()
+        completion: @escaping (Action.Type) -> Void
     ) {
         self.completion = completion
     }
