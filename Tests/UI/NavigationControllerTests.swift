@@ -270,6 +270,74 @@ extension NavigationControllerTests {
         }
     }
     
+    func testSetViewControllersDoesNotDispatchPopCompletionWhenEmpty() {
+        var number = 0
+        var call: (() -> Void)!
+        let firstViewController = UIViewController()
+        let secondViewController = UIViewController()
+        let navigationController = TestableNavigationController { action in
+            switch number {
+            case 0, 2:
+                guard
+                    case NavigationCompletionAction.setNavigation(
+                        let viewControllers,
+                        let previousViewControllers
+                    ) = action
+                    else { return }
+                if number == 0 {
+                    expect(viewControllers) == [firstViewController, secondViewController]
+                    expect(previousViewControllers).to(beEmpty())
+                    number += 1
+                    call()
+                } else if number == 2 {
+                    expect(viewControllers).to(beEmpty())
+                    expect(previousViewControllers) == [firstViewController]
+                    number += 1
+                    call()
+                }
+            case 1:
+                guard
+                    case NavigationCompletionAction.pop(
+                        let viewController,
+                        let origin
+                    ) = action
+                    else { return }
+                expect(viewController) === secondViewController
+                expect(origin) == .code
+                number += 1
+                call()
+            default: break
+            }
+        }
+        navigationController.asRootOfKeyWindow()
+        waitUntil { done in
+            call = done
+            navigationController.setViewControllers(
+                [
+                    firstViewController,
+                    secondViewController
+                ],
+                animated: false
+            )
+        }
+        waitUntil { done in
+            call = done
+            navigationController.setViewControllers(
+                [
+                    firstViewController
+                ],
+                animated: false
+            )
+        }
+        waitUntil { done in
+            call = done
+            navigationController.setViewControllers(
+                [],
+                animated: false
+            )
+        }
+    }
+    
     func testSetViewControllersDispatchesPushCompletion() {
         var number = 0
         var call: (() -> Void)!
@@ -317,6 +385,28 @@ extension NavigationControllerTests {
                 ],
                 animated: false
             )
+        }
+    }
+    
+    func testSetViewControllersDoesNotDispatchPushCompletionWhenEmpty() {
+        waitUntil { done in
+            let viewController = UIViewController()
+            let navigationController = TestableNavigationController { action in
+                guard
+                    case NavigationCompletionAction.setNavigation(
+                        let viewControllers,
+                        let previousViewControllers
+                    ) = action else { return }
+                expect(viewControllers) == [viewController]
+                expect(previousViewControllers).to(beEmpty())
+                done()
+            }
+            navigationController
+                .asRootOfKeyWindow()
+                .setViewControllers(
+                    [viewController],
+                    animated: false
+                )
         }
     }
     

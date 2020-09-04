@@ -60,20 +60,15 @@ private extension NavigationMiddleware {
             dispatch(
                 NavigationCompletionAction.start(window)
             )
-        case .set, .present, .dismiss,
-             .dismissToViewController, .dismissToRootViewController:
+        default:
             handlePresentationAction(
                 action,
                 dispatch: dispatch
             )
-        case .setNavigation, .push, .pop,
-             .popToViewController, .popToRootViewController:
             handleNavigationAction(
                 action,
                 dispatch: dispatch
             )
-        case .setTabs, .insertTab, .removeTab,
-             .selectTab, .selectTabAtIndex:
             handleTabAction(
                 action,
                 dispatch: dispatch
@@ -115,7 +110,8 @@ private extension NavigationMiddleware {
             )
         case .dismiss(let amount, let animated):
             guard let viewController = topViewController?
-                .presentingViewController(skipping: amount) else { return }
+                .presentingViewController(skipping: amount)
+                else { return }
             handlePresentationAction(
                 .dismissToViewController(
                     viewController,
@@ -264,7 +260,8 @@ private extension NavigationMiddleware {
     }
     
     var topNavigationController: UINavigationController? {
-        return topViewController?.navigationController
+        return topViewController as? UINavigationController ??
+            topViewController?.navigationController
     }
     
     var topTabBarController: UITabBarController? {
@@ -281,7 +278,7 @@ private extension UIViewController {
         let viewController = presentedViewController ?? self
         switch viewController {
         case let navigationController as UINavigationController:
-            return (navigationController.viewControllers.last ?? navigationController).topViewController
+            return navigationController.topViewController?.topViewController ?? navigationController
         case let tabBarController as UITabBarController:
             return tabBarController.selectedViewController?.topViewController ?? tabBarController
         default:
@@ -319,27 +316,6 @@ private extension UIViewController {
         } else {
             dismiss(
                 animated: flag
-            )
-        }
-    }
-    
-}
-
-private extension UINavigationController {
-    
-    @discardableResult
-    func popViewController(
-        animated: Bool,
-        programmatically: Void
-    ) -> UIViewController? {
-        if let navigationController = self as? CanPopProgrammatically {
-            return navigationController.popViewController(
-                animated: animated,
-                programmatically: ()
-            )
-        } else {
-            return popViewController(
-                animated: animated
             )
         }
     }

@@ -145,7 +145,8 @@ extension NavigationController: UINavigationControllerDelegate {
             self.manager.store.dispatch(action)
         }
         
-        if shownViewControllers.count == viewControllers.count - 1,
+        if !shownViewControllers.isEmpty,
+            shownViewControllers.count == viewControllers.count - 1,
             shownViewControllers == Array(viewControllers[0 ..< viewControllers.count - 1]),
             let pushedViewController = viewControllers.last {
             dispatch(
@@ -153,7 +154,8 @@ extension NavigationController: UINavigationControllerDelegate {
                     pushedViewController
                 )
             )
-        } else if shownViewControllers.count == viewControllers.count + 1,
+        } else if !viewControllers.isEmpty,
+            shownViewControllers.count == viewControllers.count + 1,
             Array(shownViewControllers[0 ..< shownViewControllers.count - 1]) == viewControllers,
             let lastViewController = shownViewControllers.last {
             dispatch(

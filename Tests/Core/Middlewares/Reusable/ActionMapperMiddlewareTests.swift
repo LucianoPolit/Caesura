@@ -22,13 +22,13 @@ extension ActionMapperMiddlewareTests {
                     return nil
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.start = $0 else { return fail() }
-            condition = true
-        })(TestAction.start)
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                guard case TestAction.start = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -43,13 +43,13 @@ extension ActionMapperMiddlewareTests {
                     }
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.stop = $0 else { return fail() }
-            condition = true
-        })(TestAction.start)
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                guard case TestAction.stop = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -64,20 +64,20 @@ extension ActionMapperMiddlewareTests {
                     }
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            switch number {
-            case 0:
-                guard case TestAction.fetch = $0 else { return fail() }
-            case 1:
-                guard case TestAction.stop = $0 else { return fail() }
-            default:
-                fail()
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                switch number {
+                case 0:
+                    guard case TestAction.fetch = $0 else { return fail() }
+                case 1:
+                    guard case TestAction.stop = $0 else { return fail() }
+                default:
+                    fail()
+                }
+                number += 1
             }
-            number += 1
-        })(TestAction.start)
+        )
         expect(number) == 2
     }
     
@@ -98,20 +98,20 @@ extension ActionMapperMiddlewareTests {
                     }
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            switch number {
-            case 0:
-                guard case TestAction.fetch = $0 else { return fail() }
-            case 1:
-                guard case TestAction.stop = $0 else { return fail() }
-            default:
-                fail()
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                switch number {
+                case 0:
+                    guard case TestAction.fetch = $0 else { return fail() }
+                case 1:
+                    guard case TestAction.stop = $0 else { return fail() }
+                default:
+                    fail()
+                }
+                number += 1
             }
-            number += 1
-        })(TestAction.start)
+        )
         expect(number) == 2
     }
     

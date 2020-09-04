@@ -22,13 +22,13 @@ extension APIActionDispatcherMiddlewareTests {
                     return false
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.start = $0 else { return fail() }
-            condition = true
-        })(TestAction.start)
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                guard case TestAction.start = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -44,19 +44,19 @@ extension APIActionDispatcherMiddlewareTests {
                     return true
                 }
             ]
-        ).intercept(
+        ).testIntercept(
+            withAction: TestAction.start,
             dispatch: {
                 guard case TestAction.fetch = $0 else { return fail() }
                 condition = true
-            },
-            state: { State() }
-        )({ _ in fail() })(TestAction.start)
+            }
+        )
         expect(condition).to(beTrue())
     }
     
     func testDisabledDoesNotDispatchActions() {
         var condition = false
-        let intercept = APIActionDispatcherMiddleware(
+        APIActionDispatcherMiddleware(
             dispatchers: [
                 MockActionDispatcher<TestAction> { action, dispatch in
                     switch action {
@@ -66,21 +66,22 @@ extension APIActionDispatcherMiddlewareTests {
                     return true
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.start = $0 else { return }
-            condition = true
-        })
-        intercept(APIActionDispatcherAction.disable)
-        intercept(TestAction.start)
+        ).testIntercept(
+            withActions: [
+                APIActionDispatcherAction.disable,
+                TestAction.start
+            ],
+            next: {
+                guard case TestAction.start = $0 else { return }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
     func testEnabledAfterBeingDisabledDispatchesActions() {
         var number = 0
-        let intercept = APIActionDispatcherMiddleware(
+        APIActionDispatcherMiddleware(
             dispatchers: [
                 MockActionDispatcher<TestAction> { action, dispatch in
                     switch action {
@@ -90,21 +91,23 @@ extension APIActionDispatcherMiddlewareTests {
                     return true
                 }
             ]
-        ).intercept(
+        ).testIntercept(
+            withActions: [
+                APIActionDispatcherAction.disable,
+                TestAction.start,
+                APIActionDispatcherAction.enable,
+                TestAction.start
+            ],
             dispatch: {
                 guard case TestAction.fetch = $0 else { return fail() }
                 expect(number) == 1
                 number += 1
             },
-            state: { State() }
-        )({
-            guard case TestAction.start = $0 else { return }
-            number += 1
-        })
-        intercept(APIActionDispatcherAction.disable)
-        intercept(TestAction.start)
-        intercept(APIActionDispatcherAction.enable)
-        intercept(TestAction.start)
+            next: {
+                guard case TestAction.start = $0 else { return }
+                number += 1
+            }
+        )
         expect(number) == 2
     }
     

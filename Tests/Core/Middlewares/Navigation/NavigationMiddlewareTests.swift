@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import Nimble
 @testable import Caesura
 
@@ -139,7 +140,7 @@ extension NavigationMiddlewareTests {
     
     func testPresentFromTabBarController() {
         let viewController = MockViewController()
-        let navigationController = TabBarController().with {
+        let navigationController = UITabBarController().with {
             $0.setViewControllers(
                 [
                     UIViewController(),

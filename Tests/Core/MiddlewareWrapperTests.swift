@@ -30,16 +30,17 @@ extension MiddlewareWrapperTests {
                     }
                 }
             }
-            wrapper.intercept(
+            wrapper.testIntercept(
+                withAction: TestAction.start,
                 dispatch: {
                     guard case TestAction.fetch = $0 else { return }
                     number += 1
                 },
-                state: { State() }
-            )({
-                guard case TestAction.start = $0 else { return }
-                number += 1
-            })(TestAction.start)
+                next: {
+                    guard case TestAction.start = $0 else { return }
+                    number += 1
+                }
+            )
         }
     }
     

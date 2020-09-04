@@ -20,13 +20,13 @@ extension ModuleMapperMiddlewareTests {
             mappers: [
                 { _ in nil }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case ApplicationCompletionAction.didFinishLaunching = $0 else { return fail() }
-            condition = true
-        })(ApplicationCompletionAction.didFinishLaunching)
+        ).testIntercept(
+            withAction: ApplicationCompletionAction.didFinishLaunching,
+            next: {
+                guard case ApplicationCompletionAction.didFinishLaunching = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -45,13 +45,13 @@ extension ModuleMapperMiddlewareTests {
                     return nil
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.start = $0 else { return fail() }
-            condition = true
-        })(ApplicationCompletionAction.didFinishLaunching)
+        ).testIntercept(
+            withAction: ApplicationCompletionAction.didFinishLaunching,
+            next: {
+                guard case TestAction.start = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -70,13 +70,13 @@ extension ModuleMapperMiddlewareTests {
                     return nil
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.stop = $0 else { return fail() }
-            condition = true
-        })(ApplicationCompletionAction.didFinishLaunching)
+        ).testIntercept(
+            withAction: ApplicationCompletionAction.didFinishLaunching,
+            next: {
+                guard case TestAction.stop = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -95,13 +95,13 @@ extension ModuleMapperMiddlewareTests {
                     return nil
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.fetch = $0 else { return fail() }
-            condition = true
-        })(ApplicationCompletionAction.didFinishLaunching)
+        ).testIntercept(
+            withAction: ApplicationCompletionAction.didFinishLaunching,
+            next: {
+                guard case TestAction.fetch = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -122,22 +122,22 @@ extension ModuleMapperMiddlewareTests {
                     return nil
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            switch number {
-            case 0:
-                guard case TestAction.start = $0 else { return fail() }
-            case 1:
-                guard case TestAction.stop = $0 else { return fail() }
-            case 2:
-                guard case TestAction.fetch = $0 else { return fail() }
-            default:
-                fail()
+        ).testIntercept(
+            withAction: ApplicationCompletionAction.didFinishLaunching,
+            next: {
+                switch number {
+                case 0:
+                    guard case TestAction.start = $0 else { return fail() }
+                case 1:
+                    guard case TestAction.stop = $0 else { return fail() }
+                case 2:
+                    guard case TestAction.fetch = $0 else { return fail() }
+                default:
+                    fail()
+                }
+                number += 1
             }
-            number += 1
-        })(ApplicationCompletionAction.didFinishLaunching)
+        )
         expect(number) == 3
     }
     
@@ -160,13 +160,13 @@ extension ModuleMapperMiddlewareTests {
                     return nil
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.start = $0 else { return fail() }
-            number += 1
-        })(TestAction.start)
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                guard case TestAction.start = $0 else { return fail() }
+                number += 1
+            }
+        )
         expect(number) == 1
     }
     
@@ -206,20 +206,20 @@ extension ModuleMapperMiddlewareTests {
                     return nil
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            switch number {
-            case 0:
-                guard case SecondTestAction.start = $0 else { return fail() }
-            case 1:
-                guard case ThirdTestAction.stop = $0 else { return fail() }
-            default:
-                fail()
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                switch number {
+                case 0:
+                    guard case SecondTestAction.start = $0 else { return fail() }
+                case 1:
+                    guard case ThirdTestAction.stop = $0 else { return fail() }
+                default:
+                    fail()
+                }
+                number += 1
             }
-            number += 1
-        })(TestAction.start)
+        )
         expect(number) == 2
     }
     

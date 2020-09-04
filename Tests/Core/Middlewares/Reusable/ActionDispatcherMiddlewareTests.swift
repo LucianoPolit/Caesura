@@ -22,13 +22,13 @@ extension ActionDispatcherMiddlewareTests {
                     return false
                 }
             ]
-        ).intercept(
-            dispatch: { _ in fail() },
-            state: { State() }
-        )({
-            guard case TestAction.start = $0 else { return fail() }
-            condition = true
-        })(TestAction.start)
+        ).testIntercept(
+            withAction: TestAction.start,
+            next: {
+                guard case TestAction.start = $0 else { return fail() }
+                condition = true
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -44,13 +44,13 @@ extension ActionDispatcherMiddlewareTests {
                     return true
                 }
             ]
-        ).intercept(
+        ).testIntercept(
+            withAction: TestAction.start,
             dispatch: {
                 guard case TestAction.fetch = $0 else { return fail() }
                 condition = true
-            },
-            state: { State() }
-        )({ _ in fail() })(TestAction.start)
+            }
+        )
         expect(condition).to(beTrue())
     }
     
@@ -68,7 +68,8 @@ extension ActionDispatcherMiddlewareTests {
                     return true
                 }
             ]
-        ).intercept(
+        ).testIntercept(
+            withAction: TestAction.start,
             dispatch: {
                 switch number {
                 case 0:
@@ -79,9 +80,8 @@ extension ActionDispatcherMiddlewareTests {
                     fail()
                 }
                 number += 1
-            },
-            state: { State() }
-        )({ _ in fail() })(TestAction.start)
+            }
+        )
         expect(number) == 2
     }
     
@@ -104,7 +104,8 @@ extension ActionDispatcherMiddlewareTests {
                     return true
                 }
             ]
-        ).intercept(
+        ).testIntercept(
+            withAction: TestAction.start,
             dispatch: {
                 switch number {
                 case 0:
@@ -115,9 +116,8 @@ extension ActionDispatcherMiddlewareTests {
                     fail()
                 }
                 number += 1
-            },
-            state: { State() }
-        )({ _ in fail() })(TestAction.start)
+            }
+        )
         expect(number) == 2
     }
 

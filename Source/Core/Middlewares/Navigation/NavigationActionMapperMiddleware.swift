@@ -31,16 +31,15 @@ class NavigationActionMapperMiddleware: ActionMapperMiddleware {
         next: @escaping DispatchFunction,
         dispatch: @escaping DispatchFunction
     ) {
-        let startAction: Action? = {
-            guard case ApplicationCompletionAction.didFinishLaunching = action else { return nil }
-            return NavigationAction.start
-        }()
-        super.handle(
-            action: startAction ?? action,
-            next: next,
-            dispatch: dispatch
-        )
-        if case ApplicationCompletionAction.didFinishLaunching = action { next(action) }
+        guard case ApplicationCompletionAction.didFinishLaunching = action else {
+            return super.handle(
+                action: action,
+                next: next,
+                dispatch: dispatch
+            )
+        }
+        next(action)
+        next(NavigationAction.start)
     }
     
 }
