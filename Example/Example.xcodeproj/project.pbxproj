@@ -34,6 +34,13 @@
 		A20EAD5B25003844004FB609 /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5A25003844004FB609 /* TestError.swift */; };
 		A20EAD5D25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD5C25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift */; };
 		A20EAD6125004320004FB609 /* ModuleMapperMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6025004320004FB609 /* ModuleMapperMiddlewareTests.swift */; };
+		A20EAD6425015BFC004FB609 /* NavigationActionMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6325015BFC004FB609 /* NavigationActionMapperTests.swift */; };
+		A20EAD6825015C1F004FB609 /* NavigationActionMapperMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6725015C1F004FB609 /* NavigationActionMapperMiddlewareTests.swift */; };
+		A20EAD6A25015C2C004FB609 /* NavigationMiddlewareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6925015C2C004FB609 /* NavigationMiddlewareTests.swift */; };
+		A20EAD6C25018E15004FB609 /* Middleware+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6B25018E15004FB609 /* Middleware+Utils.swift */; };
+		A20EAD6E2501904E004FB609 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6D2501904E004FB609 /* MockViewController.swift */; };
+		A20EAD702501916F004FB609 /* MockTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6F2501916F004FB609 /* MockTabBarController.swift */; };
+		A20EAD7225019178004FB609 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD7125019178004FB609 /* MockNavigationController.swift */; };
 		A275AE3E24E0A6BB004C4FD6 /* AppModuleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */; };
 		A2A4D89624EDB45D0064FB72 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89124EDB45D0064FB72 /* Common.framework */; };
 		A2A4D89824EDB45D0064FB72 /* Generics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89224EDB45D0064FB72 /* Generics.framework */; };
@@ -93,6 +100,13 @@
 		A20EAD5A25003844004FB609 /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
 		A20EAD5C25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActionDispatcherMiddlewareTests.swift; sourceTree = "<group>"; };
 		A20EAD6025004320004FB609 /* ModuleMapperMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleMapperMiddlewareTests.swift; sourceTree = "<group>"; };
+		A20EAD6325015BFC004FB609 /* NavigationActionMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationActionMapperTests.swift; sourceTree = "<group>"; };
+		A20EAD6725015C1F004FB609 /* NavigationActionMapperMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationActionMapperMiddlewareTests.swift; sourceTree = "<group>"; };
+		A20EAD6925015C2C004FB609 /* NavigationMiddlewareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMiddlewareTests.swift; sourceTree = "<group>"; };
+		A20EAD6B25018E15004FB609 /* Middleware+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Middleware+Utils.swift"; sourceTree = "<group>"; };
+		A20EAD6D2501904E004FB609 /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
+		A20EAD6F2501916F004FB609 /* MockTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBarController.swift; sourceTree = "<group>"; };
+		A20EAD7125019178004FB609 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
 		A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModuleMapper.swift; sourceTree = "<group>"; };
 		A2A4D89124EDB45D0064FB72 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A4D89224EDB45D0064FB72 /* Generics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Generics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +228,7 @@
 			children = (
 				A20EAD54250036F8004FB609 /* API */,
 				A20EAD5F250040E5004FB609 /* Modules */,
+				A20EAD6225015BC3004FB609 /* Navigation */,
 				A20EAD55250036FD004FB609 /* Reusable */,
 			);
 			path = Middlewares;
@@ -245,6 +260,16 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		A20EAD6225015BC3004FB609 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A20EAD6325015BFC004FB609 /* NavigationActionMapperTests.swift */,
+				A20EAD6725015C1F004FB609 /* NavigationActionMapperMiddlewareTests.swift */,
+				A20EAD6925015C2C004FB609 /* NavigationMiddlewareTests.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		A2ECD84A24F9577600458246 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +295,9 @@
 				A20EAD3024FEE12D004FB609 /* MockStateRegistrable.swift */,
 				A20EAD5225000BD1004FB609 /* MockActionDispatcher.swift */,
 				A20EAD5025000BC7004FB609 /* MockActionMapper.swift */,
+				A20EAD6D2501904E004FB609 /* MockViewController.swift */,
+				A20EAD7125019178004FB609 /* MockNavigationController.swift */,
+				A20EAD6F2501916F004FB609 /* MockTabBarController.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -283,6 +311,7 @@
 				A20EAD4524FFE69C004FB609 /* TestAPI.swift */,
 				A20EAD5A25003844004FB609 /* TestError.swift */,
 				A20EAD1C24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift */,
+				A20EAD6B25018E15004FB609 /* Middleware+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -430,6 +459,8 @@
 			files = (
 				A20EAD5325000BD1004FB609 /* MockActionDispatcher.swift in Sources */,
 				A2ECD85824F9719000458246 /* MockManager.swift in Sources */,
+				A20EAD6825015C1F004FB609 /* NavigationActionMapperMiddlewareTests.swift in Sources */,
+				A20EAD6A25015C2C004FB609 /* NavigationMiddlewareTests.swift in Sources */,
 				A20EAD2B24FEE113004FB609 /* MockAPIActionDispatcher.swift in Sources */,
 				A2ECD86524F9799300458246 /* NavigationControllerTests.swift in Sources */,
 				A2ECD85724F9718A00458246 /* UIViewController+Utils.swift in Sources */,
@@ -440,11 +471,14 @@
 				A2ECD86824FAA0C100458246 /* TestCase.swift in Sources */,
 				A20EAD5D25003CCE004FB609 /* APIActionDispatcherMiddlewareTests.swift in Sources */,
 				A2ECD84D24F9591700458246 /* ViewControllerTests.swift in Sources */,
+				A20EAD6E2501904E004FB609 /* MockViewController.swift in Sources */,
 				A20EAD5125000BC7004FB609 /* MockActionMapper.swift in Sources */,
+				A20EAD6C25018E15004FB609 /* Middleware+Utils.swift in Sources */,
 				A20EAD4824FFE6B2004FB609 /* TestState.swift in Sources */,
 				A20EAD4E250009D6004FB609 /* ActionMapperMiddlewareTests.swift in Sources */,
 				A20EAD3C24FEE9B4004FB609 /* ActionWrapperTests.swift in Sources */,
 				A20EAD1F24FEE0AF004FB609 /* MockMiddleware.swift in Sources */,
+				A20EAD702501916F004FB609 /* MockTabBarController.swift in Sources */,
 				A20EAD2F24FEE126004FB609 /* MockActionRegistrable.swift in Sources */,
 				A20EAD1D24FEC51F004FB609 /* ApplicationCompletionAction+CaseIterable.swift in Sources */,
 				A20EAD4F250009DA004FB609 /* ActionDispatcherMiddlewareTests.swift in Sources */,
@@ -455,7 +489,9 @@
 				A20EAD3724FEE927004FB609 /* StateTests.swift in Sources */,
 				A20EAD4924FFE6C0004FB609 /* TestAction.swift in Sources */,
 				A20EAD4724FFE6AE004FB609 /* TestAPI.swift in Sources */,
+				A20EAD7225019178004FB609 /* MockNavigationController.swift in Sources */,
 				A2ECD86124F9797E00458246 /* TabBarControllerTests.swift in Sources */,
+				A20EAD6425015BFC004FB609 /* NavigationActionMapperTests.swift in Sources */,
 				A20EAD2724FEE0FF004FB609 /* MockReducer.swift in Sources */,
 				A20EAD1B24FD7DAD004FB609 /* ManagerTests.swift in Sources */,
 				A20EAD2924FEE108004FB609 /* MockNavigationActionMapper.swift in Sources */,
