@@ -1,4 +1,4 @@
-<img src="./Resources/banner.svg"/>
+![Banner](https://raw.githubusercontent.com/LucianoPolit/Caesura/master/Resources/banner.svg)
 
 <p align="center">
     <a href="https://travis-ci.org/LucianoPolit/Caesura">
@@ -137,7 +137,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/LucianoPolit/Caesura.git",
-            .upToNextMajor(from: "1.0.0-beta")
+            .upToNextMajor(from: "1.0.0-rc")
         )
     ],
     targets: [
@@ -160,12 +160,12 @@ let package = Package(
 To integrate `Caesura` into your project using [CocoaPods](http://cocoapods.org), specify it in your `Podfile`:
 
 ```ruby
-pod 'Caesura', '~> 1.0.0-beta'
-pod 'Caesura/Core', '~> 1.0.0-beta'
-pod 'Caesura/UI', '~> 1.0.0-beta'
-pod 'Caesura/StandardAction', '~> 1.0.0-beta'
-pod 'Caesura/Middlewares', '~> 1.0.0-beta'
-pod 'Caesura/ReRxSwift', '~> 1.0.0-beta'
+pod 'Caesura', '~> 1.0.0-rc'
+pod 'Caesura/Core', '~> 1.0.0-rc'
+pod 'Caesura/UI', '~> 1.0.0-rc'
+pod 'Caesura/StandardAction', '~> 1.0.0-rc'
+pod 'Caesura/Middlewares', '~> 1.0.0-rc'
+pod 'Caesura/ReRxSwift', '~> 1.0.0-rc'
 ```
 
 ## Communication

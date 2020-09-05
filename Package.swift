@@ -114,8 +114,7 @@ let package = Package(
             name: "CaesuraTests",
             dependencies: [
                 "Nimble",
-                "Caesura",
-                "CaesuraUI"
+                "Caesura"
             ],
             path: "Tests",
             exclude: ["UI"]
