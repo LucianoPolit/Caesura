@@ -44,7 +44,8 @@ open class TabBarController: UITabBarController, HasDismissHandler, CanDismissPr
     open override var selectedIndex: Int {
         willSet {
             previousSelectedViewController =
-                viewController(at: selectedIndex) ?? previousSelectedViewController
+                viewController(at: selectedIndex)
+                ?? previousSelectedViewController
         }
         didSet {
             guard let viewController = viewController(at: selectedIndex),
@@ -76,7 +77,7 @@ open class TabBarController: UITabBarController, HasDismissHandler, CanDismissPr
         _ viewControllers: [UIViewController]?,
         animated: Bool
     ) {
-        defer {
+        let callSuper = {
             super.setViewControllers(
                 {
                     guard var viewControllers = viewControllers else { return nil }
@@ -96,7 +97,7 @@ open class TabBarController: UITabBarController, HasDismissHandler, CanDismissPr
         guard let viewControllers = viewControllers,
             !viewControllers.isEmpty || self.viewControllers != nil,
             viewControllers != self.viewControllers
-            else { return }
+            else { return callSuper() }
         
         if let selectedViewController = selectedViewController,
             viewControllers.firstIndex(
@@ -113,36 +114,40 @@ open class TabBarController: UITabBarController, HasDismissHandler, CanDismissPr
             !viewControllers.contains($0)
         }
         
-        if insertedViewControllers.count == 1,
-            removedViewControllers.isEmpty,
-            let index = viewControllers.firstIndex(
-                of: insertedViewControllers[0]
-            ) {
-            manager.store.dispatch(
-                NavigationCompletionAction.insertTab(
-                    insertedViewControllers[0],
-                    at: index
+        defer {
+            if insertedViewControllers.count == 1,
+                removedViewControllers.isEmpty,
+                let index = viewControllers.firstIndex(
+                    of: insertedViewControllers[0]
+                ) {
+                manager.store.dispatch(
+                    NavigationCompletionAction.insertTab(
+                        insertedViewControllers[0],
+                        at: index
+                    )
                 )
-            )
-        } else if removedViewControllers.count == 1,
-            insertedViewControllers.isEmpty,
-            let index = previousViewControllers.firstIndex(
-                of: removedViewControllers[0]
-            ) {
-            manager.store.dispatch(
-                NavigationCompletionAction.removeTab(
-                    removedViewControllers[0],
-                    at: index
+            } else if removedViewControllers.count == 1,
+                insertedViewControllers.isEmpty,
+                let index = previousViewControllers.firstIndex(
+                    of: removedViewControllers[0]
+                ) {
+                manager.store.dispatch(
+                    NavigationCompletionAction.removeTab(
+                        removedViewControllers[0],
+                        at: index
+                    )
                 )
-            )
-        } else {
-            manager.store.dispatch(
-                NavigationCompletionAction.setTabs(
-                    viewControllers,
-                    previous: previousViewControllers
+            } else {
+                manager.store.dispatch(
+                    NavigationCompletionAction.setTabs(
+                        viewControllers,
+                        previous: previousViewControllers
+                    )
                 )
-            )
+            }
         }
+        
+        callSuper()
     }
     
 }

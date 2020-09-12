@@ -60,7 +60,7 @@ open class NavigationController: UINavigationController, HasDismissHandler, CanD
         _ viewControllers: [UIViewController],
         animated: Bool
     ) {
-        defer {
+        let callSuper = {
             super.setViewControllers(
                 viewControllers,
                 animated: animated
@@ -69,18 +69,27 @@ open class NavigationController: UINavigationController, HasDismissHandler, CanD
         
         guard !viewControllers.isEmpty,
             viewControllers != self.viewControllers
-            else { return }
+            else { return callSuper() }
 
-        if viewControllers.last == self.viewControllers.last {
-            manager.store.dispatch(
-                NavigationCompletionAction.setNavigation(
-                    to: viewControllers,
-                    previous: shownViewControllers
+        let selfViewControllers = self.viewControllers
+        let shownViewControllers = self.shownViewControllers
+        
+        defer {
+            if viewControllers.last == selfViewControllers.last {
+                manager.store.dispatch(
+                    NavigationCompletionAction.setNavigation(
+                        to: viewControllers,
+                        previous: shownViewControllers
+                    )
                 )
-            )
-        } else {
+            }
+        }
+        
+        if viewControllers.last != selfViewControllers.last {
             origin = .code
         }
+        
+        callSuper()
     }
     
     @discardableResult

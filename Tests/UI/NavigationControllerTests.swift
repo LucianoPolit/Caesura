@@ -91,7 +91,8 @@ extension NavigationControllerTests {
         let secondViewController = UIViewController()
         let thirdViewController = UIViewController()
         let fourthViewController = UIViewController()
-        let navigationController = TestableNavigationController { action in
+        var navigationController: UINavigationController!
+        navigationController = TestableNavigationController { action in
             guard
                 case NavigationCompletionAction.setNavigation(
                     let viewControllers,
@@ -103,10 +104,12 @@ extension NavigationControllerTests {
             case 0:
                 expect(viewControllers) == [firstViewController, secondViewController]
                 expect(previousViewControllers).to(beEmpty())
+                expect(navigationController.viewControllers) == [firstViewController, secondViewController]
                 call()
             case 1:
                 expect(viewControllers) == [thirdViewController, fourthViewController]
                 expect(previousViewControllers) == [firstViewController, secondViewController]
+                expect(navigationController.viewControllers) == [thirdViewController, fourthViewController]
                 call()
             default:
                 fail()
@@ -178,7 +181,8 @@ extension NavigationControllerTests {
         var call: (() -> Void)!
         let firstViewController = UIViewController()
         let secondViewController = UIViewController()
-        let navigationController = TestableNavigationController { action in
+        var navigationController: UINavigationController!
+        navigationController = TestableNavigationController { action in
             guard
                 case NavigationCompletionAction.setNavigation(
                     let viewControllers,
@@ -194,6 +198,7 @@ extension NavigationControllerTests {
             case 1:
                 expect(viewControllers) == [secondViewController]
                 expect(previousViewControllers) == [firstViewController, secondViewController]
+                expect(navigationController.viewControllers) == [secondViewController]
                 call()
             default:
                 fail()

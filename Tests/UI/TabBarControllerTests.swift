@@ -88,7 +88,8 @@ extension TabBarControllerTests {
         waitUntil { done in
             let firstViewController = UIViewController()
             let secondViewController = UIViewController()
-            let tabBarController = TestableTabBarController { action in
+            var tabBarController: UITabBarController!
+            tabBarController = TestableTabBarController { action in
                 guard
                     case NavigationCompletionAction.setTabs(
                         let viewControllers,
@@ -97,6 +98,7 @@ extension TabBarControllerTests {
                     else { return }
                 expect(previousViewControllers).to(beEmpty())
                 expect(viewControllers) == [firstViewController, secondViewController]
+                expect(tabBarController.viewControllers) == [firstViewController, secondViewController]
                 done()
             }
             tabBarController.asRootOfKeyWindow().setViewControllers(
