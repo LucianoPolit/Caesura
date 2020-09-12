@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36ADFD57B33CFCE702F5CBC3 /* Pods_Middlewares_MiddlewaresTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAB83D772F87C294C8FE652 /* Pods_Middlewares_MiddlewaresTests.framework */; };
+		A21AD417250D1C0E000B8B0F /* WindowLoggerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21AD416250D1C0E000B8B0F /* WindowLoggerMiddleware.swift */; };
 		A239F54F24EA3F2100D1E621 /* Middlewares.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A239F54524EA3F2100D1E621 /* Middlewares.framework */; };
 		A239F55424EA3F2100D1E621 /* MiddlewaresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239F55324EA3F2100D1E621 /* MiddlewaresTests.swift */; };
 		A239F55624EA3F2100D1E621 /* Middlewares.h in Headers */ = {isa = PBXBuildFile; fileRef = A239F54824EA3F2100D1E621 /* Middlewares.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +34,7 @@
 		15AAC17CA926E8642B91BB0B /* Pods-Whatever-Middlewares.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whatever-Middlewares.release.xcconfig"; path = "Target Support Files/Pods-Whatever-Middlewares/Pods-Whatever-Middlewares.release.xcconfig"; sourceTree = "<group>"; };
 		389F73369FBAD321A6BB2FC0 /* Pods-Whatever-Middlewares.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whatever-Middlewares.debug.xcconfig"; path = "Target Support Files/Pods-Whatever-Middlewares/Pods-Whatever-Middlewares.debug.xcconfig"; sourceTree = "<group>"; };
 		42D8BAA06860D8F2E5F66B40 /* Pods_Middlewares.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Middlewares.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A21AD416250D1C0E000B8B0F /* WindowLoggerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowLoggerMiddleware.swift; sourceTree = "<group>"; };
 		A239F54524EA3F2100D1E621 /* Middlewares.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Middlewares.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A239F54824EA3F2100D1E621 /* Middlewares.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Middlewares.h; sourceTree = "<group>"; };
 		A239F54924EA3F2100D1E621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				A239F5EE24EADE7700D1E621 /* Middleware+Utils.swift */,
 				A239F56A24EA3F6E00D1E621 /* LoggerMiddleware.swift */,
+				A21AD416250D1C0E000B8B0F /* WindowLoggerMiddleware.swift */,
 				A239F54824EA3F2100D1E621 /* Middlewares.h */,
 				A239F54924EA3F2100D1E621 /* Info.plist */,
 			);
@@ -306,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A21AD417250D1C0E000B8B0F /* WindowLoggerMiddleware.swift in Sources */,
 				A239F56B24EA3F6E00D1E621 /* LoggerMiddleware.swift in Sources */,
 				A239F5EF24EADE7700D1E621 /* Middleware+Utils.swift in Sources */,
 			);

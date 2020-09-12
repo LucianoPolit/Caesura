@@ -25,6 +25,7 @@ extension Array where Element == Middleware {
                 print($0)
             },
             LoggerMiddleware(),
+            WindowLoggerMiddleware(),
             KickOffMiddleware()
         ]
     }
