@@ -41,8 +41,8 @@
 		A20EAD6E2501904E004FB609 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6D2501904E004FB609 /* MockViewController.swift */; };
 		A20EAD702501916F004FB609 /* MockTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD6F2501916F004FB609 /* MockTabBarController.swift */; };
 		A20EAD7225019178004FB609 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EAD7125019178004FB609 /* MockNavigationController.swift */; };
+		A21AD4262513EBC6000B8B0F /* API.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21AD4252513EBC6000B8B0F /* API.framework */; };
 		A275AE3E24E0A6BB004C4FD6 /* AppModuleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */; };
-		A2A4D89624EDB45D0064FB72 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89124EDB45D0064FB72 /* Common.framework */; };
 		A2A4D89824EDB45D0064FB72 /* Generics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89224EDB45D0064FB72 /* Generics.framework */; };
 		A2A4D89A24EDB45D0064FB72 /* List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89324EDB45D0064FB72 /* List.framework */; };
 		A2A4D89C24EDB45D0064FB72 /* Middlewares.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A4D89424EDB45D0064FB72 /* Middlewares.framework */; };
@@ -107,8 +107,8 @@
 		A20EAD6D2501904E004FB609 /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
 		A20EAD6F2501916F004FB609 /* MockTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBarController.swift; sourceTree = "<group>"; };
 		A20EAD7125019178004FB609 /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
+		A21AD4252513EBC6000B8B0F /* API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A275AE3D24E0A6BB004C4FD6 /* AppModuleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModuleMapper.swift; sourceTree = "<group>"; };
-		A2A4D89124EDB45D0064FB72 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A4D89224EDB45D0064FB72 /* Generics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Generics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A4D89324EDB45D0064FB72 /* List.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = List.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A4D89424EDB45D0064FB72 /* Middlewares.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Middlewares.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,10 +129,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2A4D89E24EDB45D0064FB72 /* Tab.framework in Frameworks */,
+				A21AD4262513EBC6000B8B0F /* API.framework in Frameworks */,
 				A2A4D89824EDB45D0064FB72 /* Generics.framework in Frameworks */,
 				A2A4D89A24EDB45D0064FB72 /* List.framework in Frameworks */,
 				A2A4D89C24EDB45D0064FB72 /* Middlewares.framework in Frameworks */,
-				A2A4D89624EDB45D0064FB72 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +156,7 @@
 		82BF6995D16D9E938F87E75F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A2A4D89124EDB45D0064FB72 /* Common.framework */,
+				A21AD4252513EBC6000B8B0F /* API.framework */,
 				A2A4D89224EDB45D0064FB72 /* Generics.framework */,
 				A2A4D89324EDB45D0064FB72 /* List.framework */,
 				A2A4D89424EDB45D0064FB72 /* Middlewares.framework */,
@@ -383,7 +383,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A20B1C0E24DDE2BC000AE004 /* Build configuration list for PBXProject "Example" */;
+			buildConfigurationList = A20B1C0E24DDE2BC000AE004 /* Build configuration list for PBXProject "Main" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -648,7 +648,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Caesura.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Example;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -667,7 +667,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Caesura.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Example;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -718,7 +718,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A20B1C0E24DDE2BC000AE004 /* Build configuration list for PBXProject "Example" */ = {
+		A20B1C0E24DDE2BC000AE004 /* Build configuration list for PBXProject "Main" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A20B1C3024DDE2BE000AE004 /* Debug */,

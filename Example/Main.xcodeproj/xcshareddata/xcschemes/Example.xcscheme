@@ -17,7 +17,7 @@
                BlueprintIdentifier = "A20B1C1224DDE2BC000AE004"
                BuildableName = "Example.app"
                BlueprintName = "Example"
-               ReferencedContainer = "container:Example.xcodeproj">
+               ReferencedContainer = "container:Main.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -144,7 +144,7 @@
                BlueprintIdentifier = "A20B1C2824DDE2BE000AE004"
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
-               ReferencedContainer = "container:Example.xcodeproj">
+               ReferencedContainer = "container:Main.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -166,7 +166,7 @@
             BlueprintIdentifier = "A20B1C1224DDE2BC000AE004"
             BuildableName = "Example.app"
             BlueprintName = "Example"
-            ReferencedContainer = "container:Example.xcodeproj">
+            ReferencedContainer = "container:Main.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -183,7 +183,7 @@
             BlueprintIdentifier = "A20B1C1224DDE2BC000AE004"
             BuildableName = "Example.app"
             BlueprintName = "Example"
-            ReferencedContainer = "container:Example.xcodeproj">
+            ReferencedContainer = "container:Main.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
