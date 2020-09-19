@@ -6,8 +6,8 @@
 
 import UIKit
 import Caesura
+import API
 import Middlewares
-import Common
 import List
 import Tab
 import Generics
@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let caesura = Manager.main
         .register(
-            api: API()
+            api: Manager()
         )
         .register(
             middlewares: .debug(),
