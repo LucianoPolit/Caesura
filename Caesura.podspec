@@ -1,7 +1,6 @@
 Pod::Spec.new do |s|
-
   s.name             = 'Caesura'
-  s.version          = '1.0.0-rc.1'
+  s.version          = '1.0.0'
   s.summary          = 'Modularization Library - Powered by ReSwift'
   s.description      = <<-DESC
                           Unidirectional Data Flow
@@ -54,5 +53,4 @@ Pod::Spec.new do |s|
     ss.dependency      'ReRxSwift', '~> 2.2'
     ss.dependency      'Caesura/Core'
   end
-
 end

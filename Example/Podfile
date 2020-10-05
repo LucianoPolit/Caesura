@@ -6,7 +6,7 @@ def caesura
   if ENV['TRAVIS']
     pod 'Caesura', :path => '../'
   else
-    pod 'Caesura', '~> 1.0.0-rc'
+    pod 'Caesura'
   end
 end
 

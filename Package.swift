@@ -117,7 +117,9 @@ let package = Package(
                 "Caesura"
             ],
             path: "Tests",
-            exclude: ["UI"]
+            exclude: [
+                "UI"
+            ]
         )
     ]
 )

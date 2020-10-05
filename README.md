@@ -10,7 +10,7 @@
     <a href="https://swift.org/package-manager">
         <img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager compatible"/>
     </a>
-    <a href="http://cocoapods.org/pods/Caesura">
+    <a href="https://cocoapods.org/pods/Caesura">
         <img src="https://img.shields.io/cocoapods/v/Caesura.svg" alt="CocoaPods compatible"/>
     </a>
     <a href="https://gitter.im/CaesuraSwift/community">
@@ -137,7 +137,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/LucianoPolit/Caesura.git",
-            .upToNextMajor(from: "1.0.0-rc")
+            .upToNextMajor(from: "1.0.0")
         )
     ],
     targets: [
@@ -160,12 +160,12 @@ let package = Package(
 To integrate `Caesura` into your project using [CocoaPods](http://cocoapods.org), specify it in your `Podfile`:
 
 ```ruby
-pod 'Caesura', '~> 1.0.0-rc'
-pod 'Caesura/Core', '~> 1.0.0-rc'
-pod 'Caesura/UI', '~> 1.0.0-rc'
-pod 'Caesura/StandardAction', '~> 1.0.0-rc'
-pod 'Caesura/Middlewares', '~> 1.0.0-rc'
-pod 'Caesura/ReRxSwift', '~> 1.0.0-rc'
+pod 'Caesura', '~> 1.0.0'
+pod 'Caesura/Core'
+pod 'Caesura/UI'
+pod 'Caesura/StandardAction'
+pod 'Caesura/Middlewares'
+pod 'Caesura/ReRxSwift'
 ```
 
 ## Communication
