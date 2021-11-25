@@ -28,6 +28,7 @@ import UIKit
 import Caesura
 #endif
 
+@objc(CaesuraViewController)
 open class ViewController: UIViewController, HasDismissHandler, CanDismissProgrammatically {
     
     open lazy var dismissHandler = DismissHandler(
