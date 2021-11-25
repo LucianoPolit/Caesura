@@ -1,6 +1,7 @@
 workspace 'Example'
 platform :ios, '10.0'
 use_frameworks!
+inhibit_all_warnings!
 
 def caesura
   if ENV['TRAVIS']
@@ -27,7 +28,7 @@ def rx
 end
 
 def tests
-  pod 'Nimble', '~> 7.0'
+  pod 'Nimble', '~> 9.2'
   pod 'AwesomeUtilitiesTests', '~> 1.8'
 end
 

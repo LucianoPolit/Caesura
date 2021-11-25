@@ -160,7 +160,7 @@ let package = Package(
 To integrate `Caesura` into your project using [CocoaPods](http://cocoapods.org), specify it in your `Podfile`:
 
 ```ruby
-pod 'Caesura', '~> 1.0.0'
+pod 'Caesura', '~> 1.0'
 pod 'Caesura/Core'
 pod 'Caesura/UI'
 pod 'Caesura/StandardAction'

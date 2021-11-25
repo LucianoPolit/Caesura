@@ -40,11 +40,11 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/svdo/ReRxSwift.git",
-            .upToNextMajor(from: "2.2.2")
+            .upToNextMajor(from: "2.2.0")
         ),
         .package(
             url: "https://github.com/Quick/Nimble.git",
-            .upToNextMajor(from: "7.0.0")
+            .upToNextMajor(from: "9.2.0")
         )
     ],
     targets: [

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Caesura'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Modularization Library - Powered by ReSwift'
   s.description      = <<-DESC
                           Unidirectional Data Flow
