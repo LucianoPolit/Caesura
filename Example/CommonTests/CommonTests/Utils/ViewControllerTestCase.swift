@@ -15,12 +15,12 @@ public protocol TestableProps {
     static var `default`: Self { get }
 }
 
-public protocol MockEvents: class {
+public protocol MockEvents: AnyObject {
     associatedtype EventsType
     var value: EventsType { get }
 }
 
-public protocol ViewControllerTestCase: class {
+public protocol ViewControllerTestCase: AnyObject {
     associatedtype PropsType
     associatedtype EventsType
     associatedtype ViewControllerType: UIViewController & Connectable

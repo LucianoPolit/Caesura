@@ -253,7 +253,7 @@ extension TabBarControllerTests {
             tabBarController.viewControllers ?? [],
             animated: false
         )
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testInsertViewControllerDispatchesCompletion() {
@@ -528,7 +528,7 @@ extension TabBarControllerTests {
             condition = true
         }
         tabBarController.selectedIndex = 1
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testProgrammaticallySelectionDoesNotDispatchAction() {
@@ -539,7 +539,7 @@ extension TabBarControllerTests {
             condition = true
         }
         tabBarController.selectedIndex = 10
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testProgrammaticallySelectionAfterNotSelectionDispatchesAction() {

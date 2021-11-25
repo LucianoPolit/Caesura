@@ -39,11 +39,11 @@ public class StandardActionStore {
     public let key: String
     public let fileBaseName: String
     public private(set) var currentIdentifier: Int {
-        set {
-            UserDefaults.standard.set(newValue, forKey: key)
-        }
         get {
             return UserDefaults.standard.integer(forKey: key)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
         }
     }
     

@@ -81,7 +81,7 @@ extension NavigationControllerTests {
             animated: false
         )
         navigationController.asRootOfKeyWindow()
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testSetViewControllersDispatchesCompletion() {
@@ -173,7 +173,7 @@ extension NavigationControllerTests {
             ],
             animated: false
         )
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testSetViewControllersWithoutShowDispatchesCompletion() {
@@ -513,7 +513,7 @@ extension NavigationControllerTests {
             secondViewController,
             animated: false
         )
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testPopToViewControllerDispatchesPopCompletion() {
@@ -611,7 +611,7 @@ extension NavigationControllerTests {
         navigationController
             .asRootOfKeyWindow()
             .popToRootViewController(animated: false)
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testPopToRootViewControllerDispatchesPopCompletion() {
@@ -697,7 +697,7 @@ extension NavigationControllerTests {
                 animated: false,
                 programmatically: ()
             )
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
 }

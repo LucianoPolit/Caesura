@@ -24,7 +24,7 @@
 
 import Foundation
 
-public protocol ActionDispatcherProtocol: class {
+public protocol ActionDispatcherProtocol: AnyObject {
     func dispatch(
         _ action: Action,
         to destination: @escaping DispatchFunction

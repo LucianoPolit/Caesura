@@ -104,7 +104,7 @@ extension ModuleTests {
             from: manager
         )
         manager.store.dispatch(TestAction.fetch)
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
 }

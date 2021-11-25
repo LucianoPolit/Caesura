@@ -28,7 +28,7 @@ import UIKit
 import Caesura
 #endif
 
-public protocol HasDismissHandler: class {
+public protocol HasDismissHandler: AnyObject {
     var dismissHandler: DismissHandler { get }
 }
 

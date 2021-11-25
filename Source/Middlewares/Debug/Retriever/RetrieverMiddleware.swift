@@ -78,8 +78,8 @@ private extension RetrieverMiddleware {
         
         let actionsToDispatch = { (bool: Bool) -> [Action] in
             var actions: [Action] = self.store.types
-                .map(bool ? ActionBlacklistAction.addToBlacklist : ActionBlacklistAction.removeFromBlacklist)
-            actions.append(bool ? ActionBlacklistAction.enable : ActionBlacklistAction.disable)
+                .map(bool ? ActionBlocklistAction.addToBlocklist : ActionBlocklistAction.removeFromBlocklist)
+            actions.append(bool ? ActionBlocklistAction.enable : ActionBlocklistAction.disable)
             actions.append(bool ? AnimationBlockerAction.enable : AnimationBlockerAction.disable)
             return actions
         }

@@ -52,7 +52,7 @@ extension Array where Element == DebugMiddleware {
         return [
             AnimationBlockerMiddleware(),
             ActionBlockerMiddleware(),
-            ActionBlacklistMiddleware()
+            ActionBlocklistMiddleware()
         ]
     }
     

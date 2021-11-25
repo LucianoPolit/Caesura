@@ -1,5 +1,5 @@
 //
-//  ActionBlacklistMiddleware.swift
+//  ActionBlocklistMiddleware.swift
 //
 //  Copyright (c) 2020 Luciano Polit <lucianopolit@gmail.com>
 //
@@ -27,17 +27,17 @@ import Foundation
 import Caesura
 #endif
 
-public enum ActionBlacklistAction: Action {
+public enum ActionBlocklistAction: Action {
     case enable
     case disable
-    case addToBlacklist(Action.Type)
-    case removeFromBlacklist(Action.Type)
+    case addToBlocklist(Action.Type)
+    case removeFromBlocklist(Action.Type)
 }
 
-public class ActionBlacklistMiddleware: DebugMiddleware {
+public class ActionBlocklistMiddleware: DebugMiddleware {
     
     private var isEnabled = false
-    private var blacklist: [Action.Type] = []
+    private var blocklist: [Action.Type] = []
     
     public init() { }
     
@@ -57,25 +57,25 @@ public class ActionBlacklistMiddleware: DebugMiddleware {
     
 }
 
-private extension ActionBlacklistMiddleware {
+private extension ActionBlocklistMiddleware {
     
     func handle(
         action: Action,
         next: DispatchFunction
     ) {
-        if let blockerAction = action as? ActionBlacklistAction {
+        if let blockerAction = action as? ActionBlocklistAction {
             switch blockerAction {
             case .enable: isEnabled = true
             case .disable: isEnabled = false
-            case .addToBlacklist(let type): blacklist.append(type)
-            case .removeFromBlacklist(let type):
-                guard let index = blacklist.firstIndex(where: { $0 == type }) else { return }
-                blacklist.remove(at: index)
+            case .addToBlocklist(let type): blocklist.append(type)
+            case .removeFromBlocklist(let type):
+                guard let index = blocklist.firstIndex(where: { $0 == type }) else { return }
+                blocklist.remove(at: index)
             }
             return
         }
         
-        guard !isEnabled || !blacklist.contains(where: { $0 == type(of: action) }) else { return }
+        guard !isEnabled || !blocklist.contains(where: { $0 == type(of: action) }) else { return }
         next(action)
     }
     

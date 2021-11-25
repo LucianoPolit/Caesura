@@ -24,7 +24,7 @@
 
 import Foundation
 
-public protocol ActionMapperProtocol: class {
+public protocol ActionMapperProtocol: AnyObject {
     func map(_ action: Action) -> [Action]?
 }
 

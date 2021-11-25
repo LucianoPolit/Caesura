@@ -21,6 +21,7 @@ extension ActionTests: StandardActionTestCase {
     typealias ActionType = Action
 
     func testStandardActionConvertibility() {
+        #if arch(x86_64)
         expect(
             try self.testStandardActionConvertibility(
                 [
@@ -34,9 +35,10 @@ extension ActionTests: StandardActionTestCase {
                     .next("...")
                 ]
             )
-        ).toNot (
+        ).toNot(
             throwAssertion()
         )
+        #endif
     }
 
 }

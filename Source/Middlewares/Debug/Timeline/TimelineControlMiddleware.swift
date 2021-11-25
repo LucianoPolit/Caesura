@@ -298,6 +298,9 @@ private extension TimelineControlMiddleware {
     }
     
     private var isSliderHidden: Bool {
+        get {
+            return sliderContainer.alpha == 0
+        }
         set {
             guard isSliderHidden != newValue else { return }
             backgroundView.isHidden = newValue
@@ -306,8 +309,8 @@ private extension TimelineControlMiddleware {
                 var actions: [Action] = []
                 
                 let addOrRemove = newValue ?
-                    ActionBlockerAction.removeFromWhitelist :
-                    ActionBlockerAction.addToWhitelist
+                    ActionBlockerAction.removeFromSafelist :
+                    ActionBlockerAction.addToSafelist
                     
                 actions.append(
                     contentsOf: [
@@ -346,9 +349,6 @@ private extension TimelineControlMiddleware {
             if !newValue {
                 enableOrDisable()
             }
-        }
-        get {
-            return sliderContainer.alpha == 0
         }
     }
     

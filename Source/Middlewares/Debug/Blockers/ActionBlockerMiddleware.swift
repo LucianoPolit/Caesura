@@ -30,14 +30,14 @@ import Caesura
 public enum ActionBlockerAction: Action {
     case enable
     case disable
-    case addToWhitelist(Action.Type)
-    case removeFromWhitelist(Action.Type)
+    case addToSafelist(Action.Type)
+    case removeFromSafelist(Action.Type)
 }
 
 public class ActionBlockerMiddleware: DebugMiddleware {
     
     private var isEnabled = false
-    private var whitelist: [Action.Type] = []
+    private var safelist: [Action.Type] = []
     
     public init() { }
     
@@ -67,15 +67,15 @@ private extension ActionBlockerMiddleware {
             switch blockerAction {
             case .enable: isEnabled = true
             case .disable: isEnabled = false
-            case .addToWhitelist(let type): whitelist.append(type)
-            case .removeFromWhitelist(let type):
-                guard let index = whitelist.firstIndex(where: { $0 == type }) else { return }
-                whitelist.remove(at: index)
+            case .addToSafelist(let type): safelist.append(type)
+            case .removeFromSafelist(let type):
+                guard let index = safelist.firstIndex(where: { $0 == type }) else { return }
+                safelist.remove(at: index)
             }
             return
         }
         
-        guard !isEnabled || whitelist.contains(where: { $0 == type(of: action) }) else { return }
+        guard !isEnabled || safelist.contains(where: { $0 == type(of: action) }) else { return }
         next(action)
     }
     

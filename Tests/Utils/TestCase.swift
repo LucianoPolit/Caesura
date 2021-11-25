@@ -13,8 +13,8 @@ import Nimble
 class TestCase: XCTestCase {
     
     override func setUp() {
-        AsyncDefaults.Timeout = 2
-        AsyncDefaults.PollInterval = 0.1
+        AsyncDefaults.timeout = .seconds(2)
+        AsyncDefaults.pollInterval = .milliseconds(100)
     }
     
 }

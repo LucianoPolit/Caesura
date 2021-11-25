@@ -140,7 +140,7 @@ extension ManagerTests {
             )
             .start()
         
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
 }
@@ -194,7 +194,7 @@ extension ManagerTests {
                 module: MockModule.self
             )
             .start()
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testRegisterModuleStateType() {
@@ -235,7 +235,7 @@ extension ManagerTests {
                 module: MockModule.self
             )
             .start()
-        expect(condition).toEventuallyNot(beTrue(), timeout: 1)
+        expect(condition).toEventuallyNot(beTrue())
     }
     
     func testRegisterModuleReducer() {

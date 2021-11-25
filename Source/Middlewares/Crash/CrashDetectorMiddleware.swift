@@ -36,11 +36,11 @@ public class CrashDetectorMiddleware: Middleware {
     
     private static let key = "CrashDetectorMiddlewareKey"
     private static var didCrashLastTime: Bool {
-        set {
-            UserDefaults.standard.set(newValue, forKey: key)
-        }
         get {
             return UserDefaults.standard.bool(forKey: key)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
         }
     }
     

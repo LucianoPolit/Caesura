@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 
-public protocol CanPopProgrammatically: class {
+public protocol CanPopProgrammatically: AnyObject {
     @discardableResult
     func popViewController(
         animated: Bool,

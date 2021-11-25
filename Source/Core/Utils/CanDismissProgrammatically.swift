@@ -24,7 +24,7 @@
 
 import Foundation
 
-public protocol CanDismissProgrammatically: class {
+public protocol CanDismissProgrammatically: AnyObject {
     func dismiss(
         animated flag: Bool,
         completion: (() -> Void)?,

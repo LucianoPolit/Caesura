@@ -21,7 +21,7 @@ extension ModuleTests {
         expect(
             Module.initialState
         ).to(
-            equal(.init())
+            equal(State())
         )
     }
     
@@ -34,16 +34,15 @@ extension ModuleTests {
     }
     
     func testStopAction() {
-        expect(
-            try {
-                let action = Module.stopAction
-                guard action == Module.stopAction
-                    else { throw Error.unknown }
-                return nil
-            }()
-        ).to(
+        #if arch(x86_64)
+        expect {
+            let action = Module.stopAction
+            guard action == Module.stopAction
+                else { throw Error.unknown }
+        }.to(
             throwAssertion()
         )
+        #endif
     }
     
     func testNavigationActionMapper() {
